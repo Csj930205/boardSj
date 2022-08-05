@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>게시글 상세작성</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css"/>
+</head>
+<body>
+<header th:insert="header.html"></header>
+<h1 style="text-align: center">게시글 등록</h1>
+<form id="frm" name="frm" method="post" action="/board/insertBoard.do">
+    <div class="container">
+        <table class="board_detail">
+            <tr>
+                <td>제목</td>
+                <td><input type="text" id="title" name="title"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <textarea id="contents" name="contents"></textarea>
+                </td>
+            </tr>
+        </table>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">등록</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>

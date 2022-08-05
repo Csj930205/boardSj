@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>답글</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css"/>
+</head>
+<body>
+<header th:insert="header.html"></header>
+<form id="frm" method="post" action="/board/insertBoardReplay.do">
+    <h1 style="text-align: center">답글작성</h1>
+    <br>
+    <div class="container">
+        <table class="table">
+            <tr>
+                <th>게시글번호</th>
+                <td th:text="${replayBoard.seq}"></td>
+                <th>작성자</th>
+                <td>미구현</td>
+            </tr>
+            <tr>
+                <th>title</th>
+                <td th:text="'Re: '+${replayBoard.title}"></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    내용: <textarea></textarea>
+                </td>
+            </tr>
+        </table>
+        <div class="row">
+            <div class="col-auto mr-auto"></div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary">답글등록</button>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>
