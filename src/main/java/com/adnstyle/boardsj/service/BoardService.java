@@ -27,6 +27,13 @@ public class BoardService {
     }
 
     /*
+     * 게시글 삭제
+     * */
+    public int deleteBoard(int seq){
+        return boardRepository.deleteBoard(seq);
+    }
+
+    /*
     * 답변을 위한 게시글 상세조회
     * */
     public BoardDto replayGetSeq(int seq){
@@ -36,15 +43,15 @@ public class BoardService {
     /*
      * 답글 등록
      * */
-    public BoardDto insertBoardReplay(BoardDto boardDto){
+    public int insertBoardReplay(BoardDto boardDto){
         return boardRepository.insertBoardReplay(boardDto);
     }
 
     /*
-    * 게시글 삭제
+    * 답글 정렬
     * */
-    public int deleteBoard(int seq){
-        return boardRepository.deleteBoard(seq);
+    public int updateReplayBoard(BoardDto boardDto){
+        return boardRepository.updateReplayBoard(boardDto);
     }
 
 

@@ -7,26 +7,39 @@
 </head>
 <body>
 <header th:insert="header.html"></header>
-<form id="frm" method="post" action="/board/insertBoardReplay.do">
+<form method="post" action="/board/insertBoardReplay.do">
     <h1 style="text-align: center">답글작성</h1>
     <br>
     <div class="container">
         <table class="table">
             <tr>
                 <th>게시글번호</th>
-                <td th:text="${replayBoard.seq}"></td>
-                <th>작성자</th>
-                <td>미구현</td>
+                <td>
+                    <input type="text" id="seq" name="seq" th:value="${replayBoard.getSeq()}" readonly>
+                </td>
+                <th>원글 작성자</th>
+                <td>
+                    <input id="id" name="id">
+                </td>
+                <td>
+                    <input type="text" id="gNum" name="gNum" th:value="${replayBoard.getGNum()}" hidden>
+                </td>
             </tr>
             <tr>
                 <th>title</th>
-                <td th:text="'Re: '+${replayBoard.title}"></td>
-                <td></td>
-                <td></td>
+                <td>
+                    <input type="text" id="title" name="title" th:value="'RE: '+${replayBoard.getTitle()}">
+                </td>
+                <td>
+                    <input id="ordered" name="ordered" th:value="${replayBoard.getOrdered()}" hidden>
+                </td>
+                <td>
+                    <input id="depth" name="depth" th:value="${replayBoard.getDepth()}" hidden>
+                </td>
             </tr>
             <tr>
                 <td>
-                    내용: <textarea></textarea>
+                    내용: <input type="text" id="contents" name="contents" th:value="${replayBoard.getContents()}">
                 </td>
             </tr>
         </table>

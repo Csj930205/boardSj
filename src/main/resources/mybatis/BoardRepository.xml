@@ -26,9 +26,26 @@
                board_post_time,
                board_id
         FROM board
-        ORDER BY board_seq DESC, board_ordered
---         ORDER BY board_group_num DESC board_ordered ASC
+        ORDER BY board_group_num DESC , board_ordered
     </select>
+
+    <!-- 게시글 등록-->
+    <insert id="insertBoard" useGeneratedKeys="true" keyProperty="seq">
+        <selectKey resultType="int" keyProperty="gNum" order="BEFORE">
+            SELECT IFNULL(max(board_seq), 0)+1 from board
+        </selectKey>
+        INSERT INTO board(board_group_num, board_title, board_contents)
+        VALUES(#{gNum},#{title}, #{contents})
+
+    </insert>
+
+    <!-- 게시글 삭제 -->
+    <delete id="deleteBoard">
+        DELETE
+        FROM board
+        WHERE board_seq = #{seq}
+    </delete>
+
     <!-- 답글쓰기 위한 게시물 상세조회 -->
     <select id="replayGetSeq" resultMap="simpleResultBoard">
         SELECT board_seq,
@@ -49,21 +66,11 @@
         VALUES(#{gNum}, #{title}, #{contents}, #{ordered}+1, #{depth}+1)
     </insert>
 
-    <!-- 게시글 등록-->
-    <insert id="insertBoard" useGeneratedKeys="true" keyProperty="seq">
-        <selectKey resultType="int" keyProperty="gNum" order="BEFORE">
-            SELECT IFNULL(max(board_seq), 0)+1 from board
-        </selectKey>
-        INSERT INTO board(board_group_num, board_title, board_contents)
-        VALUES(#{gNum},#{title}, #{contents})
-
-    </insert>
-
-    <!-- 게시글 삭제 -->
-    <delete id="deleteBoard">
-        DELETE
-        FROM board
-        WHERE board_seq = #{seq}
-    </delete>
+    <!-- 답글 정렬 -->
+    <update id="updateReplayBoard">
+        UPDATE board SET board_ordered=board_ordered+1
+        WHERE board_group_num=#{gNum}
+        AND board_ordered >0
+    </update>
 </mapper>
 

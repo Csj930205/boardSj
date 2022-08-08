@@ -122,7 +122,7 @@ class BoardSjApplicationTests {
     * */
     @Test
     void replayGetSeqTest(){
-        BoardDto replay=bs.replayGetSeq(11);
+        BoardDto replay=bs.replayGetSeq(1);
         System.out.println(replay);
     }
 
@@ -131,8 +131,10 @@ class BoardSjApplicationTests {
     * */
     @Test
     void insertBoardReplay(){
-        BoardDto boardDto= new BoardDto();
-        BoardDto insertreplay = bs.replayGetSeq(11);
+        BoardDto insertreplay = bs.replayGetSeq(3);
+        insertreplay.setTitle("3-1");
+        insertreplay.setContents("3-1");
         bs.insertBoardReplay(insertreplay);
     }
+
 }

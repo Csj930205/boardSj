@@ -30,5 +30,10 @@ public interface BoardRepository {
     /*
     * 답글 등록
     * */
-    BoardDto insertBoardReplay(BoardDto boardDto);
+    int insertBoardReplay(BoardDto boardDto);
+
+    /*
+    * 답글 정렬
+    * */
+    int updateReplayBoard(BoardDto boardDto);
 }

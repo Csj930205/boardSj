@@ -17,6 +17,7 @@
             <th scope="col">제목</th>
             <th scope="col">작성일</th>
             <th scope="col">답글</th>
+            <th scope="col">삭제</th>
         </tr>
         </thead>
         <tbody>
@@ -25,12 +26,17 @@
             <th scope="row" th:text="${list.title}"></th>
             <th scope="row" th:text="${list.postTime}"></th>
             <th>
-                <a class="btn btn-outline-danger" role="button"
+                <a class="btn btn-outline-primary" role="button"
                    th:href="@{/board/replay/{seq}(seq=${list.seq})}">
                     답글
                 </a>
             </th>
-
+            <th>
+                <a class="btn btn-outline-danger" role="button"
+                   th:href="@{/board/delete/{seq}(seq=${list.seq})}">
+                    삭제
+                </a>
+            </th>
         </tr>
         </tbody>
     </table>
