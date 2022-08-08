@@ -71,6 +71,16 @@ public class DomainController {
     }
 
     /*
+    * 게시글 상세조회
+    * */
+    @RequestMapping("/board/detailList/{seq}")
+    public String detailListBoard(@PathVariable("seq") int seq, Model model){
+        BoardDto detailListBoard = boardService.detailListBoard(seq);
+        model.addAttribute("detailListBoard",detailListBoard);
+        return "board/detailList";
+    }
+
+    /*
      * 게시글 등록 페이지 이동
      * */
     @RequestMapping("/board/insertBoard.do")

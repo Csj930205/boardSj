@@ -11,7 +11,12 @@ public interface BoardRepository {
     * 게시글 전체조회
     * */
     List<BoardDto> listBoard();
-    
+
+    /*
+    * 게시글 개별 조회
+    * */
+    BoardDto detailListBoard(int seq);
+
     /*
     * 게시글 등록
     * */

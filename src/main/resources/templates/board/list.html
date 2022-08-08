@@ -16,6 +16,7 @@
             <th scope="col">게시번호</th>
             <th scope="col">제목</th>
             <th scope="col">작성일</th>
+            <th scope="col">상세보기</th>
             <th scope="col">답글</th>
             <th scope="col">삭제</th>
         </tr>
@@ -25,6 +26,12 @@
             <th scope="row" th:text="${list.seq}"></th>
             <th scope="row" th:text="${list.title}"></th>
             <th scope="row" th:text="${list.postTime}"></th>
+            <th>
+                <a class="btn btn-outline-primary" role="button"
+                   th:href="@{/board/detailList/{seq}(seq=${list.seq})}">
+                    상세보기
+                </a>
+            </th>
             <th>
                 <a class="btn btn-outline-primary" role="button"
                    th:href="@{/board/replay/{seq}(seq=${list.seq})}">

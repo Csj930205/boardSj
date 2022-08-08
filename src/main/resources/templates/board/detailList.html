@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>게시글 상세보기</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css"/>
+</head>
+<body>
+<header th:insert="header.html"></header>
+<form method="post" action="/board/insertBoardReplay.do">
+    <h1 style="text-align: center">상세보기</h1>
+    <br>
+    <div class="container">
+        <table class="table">
+            <tr>
+                <th>게시글번호</th>
+                <td>
+                    <input type="text" id="seq" name="seq" th:value="${detailListBoard.getSeq()}" disabled>
+                </td>
+                <th>원글 작성자</th>
+                <td>
+                    <input id="id" name="id">
+                </td>
+                <td>
+                    <input type="text" id="gNum" name="gNum" th:value="${detailListBoard.getGNum()}" hidden>
+                </td>
+            </tr>
+            <tr>
+                <th>title</th>
+                <td>
+                    <input type="text" id="title" name="title" th:value="'RE: '+${detailListBoard.getTitle()}" disabled>
+                </td>
+                <td>
+                    <input id="ordered" name="ordered" th:value="${detailListBoard.getOrdered()}" hidden>
+                </td>
+                <td>
+                    <input id="depth" name="depth" th:value="${detailListBoard.getDepth()}" hidden>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    내용: <input type="text" id="contents" name="contents" th:value="${detailListBoard.getContents()}" disabled>
+                </td>
+            </tr>
+        </table>
+        <div class="row">
+            <div class="col-auto mr-auto"></div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary">답글등록</button>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>

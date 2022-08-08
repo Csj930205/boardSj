@@ -27,6 +27,13 @@ public class BoardService {
     }
 
     /*
+    * 게시글 개별 조회
+    * */
+    public BoardDto detailListBoard(int seq){
+        return boardRepository.detailListBoard(seq);
+    }
+
+    /*
      * 게시글 삭제
      * */
     public int deleteBoard(int seq){
