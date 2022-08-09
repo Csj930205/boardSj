@@ -3,13 +3,14 @@ package com.adnstyle.boardsj.service;
 import com.adnstyle.boardsj.dto.MemberDto;
 import com.adnstyle.boardsj.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class MemberService {
+public class MemberService{
     private final MemberRepository memberRepository;
 
     /*

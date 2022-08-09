@@ -48,15 +48,15 @@ public class DomainController {
     /*
      * 로그인 페이지 이동
      * */
-    @RequestMapping("/login/login.do")
+    @RequestMapping("/auth/login.do")
     public String login() {
-        return "login/login";
+        return "auth/login";
     }
 
     /*
      * 로그아웃 및 메인페이지로 이동
      * */
-    @RequestMapping("/login/logout.do")
+    @RequestMapping("/auth/logout.do")
     public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:/";

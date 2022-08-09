@@ -19,7 +19,7 @@
                 </td>
                 <th>원글 작성자</th>
                 <td>
-                    <input id="id" name="id">
+                    <input id="id" name="id" th:value="${detailListBoard.getId()}" disabled>
                 </td>
                 <td>
                     <input type="text" id="gNum" name="gNum" th:value="${detailListBoard.getGNum()}" hidden>
@@ -39,14 +39,19 @@
             </tr>
             <tr>
                 <td>
-                    내용: <input type="text" id="contents" name="contents" th:value="${detailListBoard.getContents()}" disabled>
+                    내용: <input type="text" id="contents" name="contents" th:value="${detailListBoard.getContents()}" readonly>
                 </td>
             </tr>
         </table>
         <div class="row">
-            <div class="col-auto mr-auto"></div>
             <div class="col-auto">
-                <button type="submit" class="btn btn-primary">답글등록</button>
+                <a class="btn btn-outline-primary" role="button"
+                   th:href="@{/board/replay/{seq}(seq=${detailListBoard.seq})}">
+                    답글작성
+                </a>
+                <a class="btn btn-primary" role="button" href="/board/list.do">
+                    리스트
+                </a>
             </div>
         </div>
     </div>

@@ -4,14 +4,15 @@ import com.adnstyle.boardsj.dto.MemberDto;
 import com.adnstyle.boardsj.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/login")
 @RequiredArgsConstructor
+@RequestMapping("/auth")
 public class LoginController {
     private final MemberService memberService;
 
@@ -22,7 +23,7 @@ public class LoginController {
             session.setAttribute("loginDto", loginDto);
             return "redirect:/";
         } else {
-            return "redirect:login/login";
+            return "redirect:auth/login";
         }
     }
 }

@@ -15,11 +15,11 @@
             <tr>
                 <th>게시글번호</th>
                 <td>
-                    <input type="text" id="seq" name="seq" th:value="${replayBoard.getSeq()}" readonly>
+                    <input type="text" id="seq" name="seq" th:value="${replayBoard.getSeq()}" disabled>
                 </td>
-                <th>원글 작성자</th>
+                <th>작성자</th>
                 <td>
-                    <input id="id" name="id">
+                    <input id="id" name="id" th:value="${session.loginDto.getId()}" disabled>
                 </td>
                 <td>
                     <input type="text" id="gNum" name="gNum" th:value="${replayBoard.getGNum()}" hidden>
@@ -44,7 +44,6 @@
             </tr>
         </table>
         <div class="row">
-            <div class="col-auto mr-auto"></div>
             <div class="col-auto">
                 <button type="submit" class="btn btn-primary">답글등록</button>
             </div>

@@ -1,15 +1,26 @@
+#MY-SQL 설정
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/boardsj?serverTimeZone=UTC&CharacterEncoding=UTF-8
     username: root
     password: mysql
+  security:
+    user:
+      name: user
+      password: 1234
 
+
+#MyBatis 설정
 mybatis:
   type-aliases-package: com.adnstyle.boardSJ.dto
   mapper-locations: classpath:mybatis/*.xml
   configuration:
     map-underscore-to-camel-case: true
 
+#Server 설정
 server:
   port: 8081
+  servlet:
+    session:
+      timeout: 1800

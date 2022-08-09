@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.servlet.http.HttpSession;
+import java.lang.reflect.Member;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.List;
@@ -102,9 +104,11 @@ class BoardSjApplicationTests {
     * */
     @Test
     void boardInsertReplayTest(){
-        BoardDto boardDto =new BoardDto();
+        MemberDto memberDto = ms.loginMember("admin", "1234");
+        BoardDto boardDto = new BoardDto();
         boardDto.setTitle("Test");
         boardDto.setContents("Test");
+        boardDto.setId(memberDto.getId());
         int result = bs.insertBoard(boardDto);
         System.out.println(result);
     }

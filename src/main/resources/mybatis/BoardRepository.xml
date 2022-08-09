@@ -49,8 +49,8 @@
         <selectKey resultType="int" keyProperty="gNum" order="BEFORE">
             SELECT IFNULL(max(board_seq), 0)+1 from board
         </selectKey>
-        INSERT INTO board(board_group_num, board_title, board_contents)
-        VALUES(#{gNum},#{title}, #{contents})
+        INSERT INTO board(board_group_num, board_title, board_contents, board_id)
+        VALUES(#{gNum},#{title}, #{contents}, #{id})
 
     </insert>
 
@@ -77,8 +77,8 @@
 
     <!-- 답글 등록-->
     <insert id="insertBoardReplay" useGeneratedKeys="true" keyProperty="seq">
-        INSERT INTO board(board_group_num, board_title, board_contents, board_ordered, board_depth)
-        VALUES(#{gNum}, #{title}, #{contents}, #{ordered}+1, #{depth}+1)
+        INSERT INTO board(board_group_num, board_title, board_contents, board_ordered, board_depth, board_id)
+        VALUES(#{gNum}, #{title}, #{contents}, #{ordered}+1, #{depth}+1, #{id})
     </insert>
 
     <!-- 답글 정렬 -->

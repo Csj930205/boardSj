@@ -29,17 +29,17 @@
                 </li>
             </ul>
             <div th:if="${session.loginDto}">
-                <span th:text="${session.loginDto}?${session.loginDto.id}:''"></span>
-                (<span th:text="${session.loginDto}?${session.loginDto.name}:''"></span>,
-                <span th:text="${session.loginDto}?${session.loginDto.seq}:''"></span>)
+                <b>Id: </b><span th:text="${session.loginDto}?${session.loginDto.id}:''"></span>
+                (<b>Name: </b><span th:text="${session.loginDto}?${session.loginDto.name}:''"></span>,
+                <b>Grade: </b><span th:text="${session.loginDto}?${session.loginDto.grade}:''"></span>)
                 님 로그인
                 &nbsp;/&nbsp;
-                <a href="/login/logout.do">
+                <a href="/auth/logout.do">
                     로그아웃
                 </a>
             </div>
             <div class="d-flex" th:if="!${session.loginDto}">
-                <a href="/login/login.do">
+                <a href="/auth/login.do">
                     로그인
                 </a>&nbsp;/&nbsp;
                 <a href="/signup/signup.do">

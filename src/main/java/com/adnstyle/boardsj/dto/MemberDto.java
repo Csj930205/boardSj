@@ -17,8 +17,7 @@ public class MemberDto {
     private String id;
     private String pw;
     private String name;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date birth;
+    private String birth;
     private LocalDateTime signupTime;
     private int grade;
 }

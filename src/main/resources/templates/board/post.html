@@ -12,11 +12,15 @@
     <div class="container">
         <table class="board_detail">
             <tr>
+                <td>작성자</td>
+                <td><input type="text" id="id" name="id" th:value="${session.loginDto.getId()}" disabled></td>
+            </tr>
+            <tr>
                 <td>제목</td>
                 <td><input type="text" id="title" name="title"></td>
             </tr>
             <tr>
-                <td colspan="2">
+                <td colspan="2">내용
                     <textarea id="contents" name="contents"></textarea>
                 </td>
             </tr>
