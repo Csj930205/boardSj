@@ -12,8 +12,8 @@
         <tr class="text-center">
             <th scope="col">회원번호</th>
             <th scope="col">아이디</th>
-            <th scope="col">패스워드</th>
             <th scope="col">이름</th>
+            <th scope="col">이메일</th>
             <th scope="col">생일</th>
             <th scope="col">가입일</th>
             <th scope="col">등급</th>
@@ -24,8 +24,8 @@
         <tr class="text-center" th:each="list:${listMember}">
             <th scope="row" th:text="${list.seq}"></th>
             <th scope="row" th:text="${list.id}"></th>
-            <th scope="row" th:text="${list.pw}"></th>
             <th scope="row" th:text="${list.name}"></th>
+            <th scope="row" th:text="${list.email}"></th>
             <th scope="row" th:text="${list.birth}"></th>
             <th scope="row" th:text="${list.signupTime}"></th>
             <th scope="row" th:text="${list.grade}"></th>

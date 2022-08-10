@@ -24,6 +24,11 @@ public interface MemberRepository {
     MemberDto loginMember(String id, String pw);
 
     /*
+    * 로그인(시큐리티)
+    * */
+    MemberDto securityLogin(String id);
+
+    /*
     * 회원 등록
     * */
     int signupMember(MemberDto memberDto);

@@ -1,0 +1,56 @@
+<html lang="en" xmlns:th="http:/www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<header th:insert="header.html"></header>
+<h1 style="text-align: center">회원가입 페이지</h1>
+<form action="/signup/signup.do" method="post" name="signup">
+    <p>
+        <label>
+            아이디: <input type="text" name="id" value="" placeholder="아이디 입력">
+        </label>
+        <span id="checkId">중복체크중입니다.</span>
+    </p>
+    <p>
+        <label>
+            pw: <input type="text" name="pw" value="1234">
+        </label>
+        <span id="checkPw">길이가 4이상</span>
+    </p>
+    <p>
+        <label>
+            pwC: <input type="text" name="pw_check" value="">
+        </label>
+        <span id="checkPwCheck">중복체크중입니다.</span>
+    </p>
+    <p>
+        <label>
+            이름: <input type="text" name="name" value="길동">
+        </label>
+    </p>
+    <p>
+        <label>
+            이메일: <input type="text" name="email" value="tjdwns132@naver.com">
+        </label>
+    </p>
+    <p>
+        <label>
+            등급: <select size="1" name="grade">
+            <option value="0">관리자(0)</option>
+            <option value="1" selected>일반(1)</option>
+        </select>
+        </label>
+    </p>
+    <p>
+        <label>
+            생일: <input type="text" name="birth" value="19930205">
+        </label>
+    </p>
+    <p>
+        <button type="reset">리셋</button>
+        <button type="submit">제출</button>
+    </p>
+</form>
+</body>
+</html>

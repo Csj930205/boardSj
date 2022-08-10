@@ -16,7 +16,6 @@ public class SignupController {
 
     @PostMapping("signup.do")
     public String signupMember(MemberDto memberDto){
-        /*id 대소문자 구분안하고 id만 같으면 false해야겟네.*/
         int result= memberService.signupMember(memberDto);
         if(result>0){
             return "redirect:/";

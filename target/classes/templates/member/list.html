@@ -1,0 +1,43 @@
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta carset="UTF-8">
+</head>
+<body>
+<header th:insert="header.html"></header>
+<h1 style="text-align: center">회원리스트</h1>
+<br>
+<div class="container">
+    <table class="table">
+        <thead class="thead-light">
+        <tr class="text-center">
+            <th scope="col">회원번호</th>
+            <th scope="col">아이디</th>
+            <th scope="col">이름</th>
+            <th scope="col">이메일</th>
+            <th scope="col">생일</th>
+            <th scope="col">가입일</th>
+            <th scope="col">등급</th>
+            <th scope="col">수정</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="text-center" th:each="list:${listMember}">
+            <th scope="row" th:text="${list.seq}"></th>
+            <th scope="row" th:text="${list.id}"></th>
+            <th scope="row" th:text="${list.name}"></th>
+            <th scope="row" th:text="${list.email}"></th>
+            <th scope="row" th:text="${list.birth}"></th>
+            <th scope="row" th:text="${list.signupTime}"></th>
+            <th scope="row" th:text="${list.grade}"></th>
+            <th>
+                <a class="btn btn-outline-primary" role="button"
+                   th:href="@{/member/modify/{seq}(seq=${list.seq})}">
+                    상세보기
+                </a>
+            </th>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

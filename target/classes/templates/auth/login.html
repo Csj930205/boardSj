@@ -1,0 +1,29 @@
+<html lang="en" xmlns:th="http:/www.thymeleaf.org">
+<head>
+    <meta carset="UTF-8">
+</head>
+<body>
+<header th:insert="header.html"></header>
+<h1 style="text-align: center">로그인페이지</h1>
+<div class="d-flex justify-content-center align-items-center" style="height: calc(100vh - 200px)">
+    <form th:action="@{/login_proc}" method="post" style="width: 400px;">
+        <div class="mb-3 row">
+            <label th:for="username" class="col-sm-2 col-form-label">아이디</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="username" name="username" value="admin">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label th:for="password" class="col-sm-2 col-form-label">패스워드</label>
+            <div class="col-sm-10">
+                <input type="password" id="password" name="password" class="form-control" value="1234">
+            </div>
+        </div>
+        <div class="col-12">
+            <button type="button" class="btn btn-danger">회원가입</button>
+            <button type="submit" class="btn btn-success">로그인</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

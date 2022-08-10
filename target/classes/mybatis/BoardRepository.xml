@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.adnstyle.boardsj.repository.BoardRepository">
+    <resultMap id="simpleResultBoard" type="BoardDto">
+        <id property="seq" column="board_seq"/>
+        <result property="gNum" column="board_group_num"/>
+        <result property="ordered" column="board_ordered"/>
+        <result property="depth" column="board_depth"/>
+        <result property="title" column="board_title"/>
+        <result property="contents" column="board_contents"/>
+        <result property="postTime" column="board_post_time"/>
+        <result property="id" column="board_id"/>
+    </resultMap>
+
+    <!-- 게시글 리스트 조회 -->
+    <select id="listBoard" resultMap="simpleResultBoard">
+        SELECT board_seq,
+               board_group_num,
+               board_ordered,
+               board_depth,
+               board_title,
+               board_contents,
+               board_post_time,
+               board_id
+        FROM board
+        ORDER BY board_group_num DESC , board_ordered
+    </select>
+
+    <!-- 게시글 개별 조회 -->
+    <select id="detailListBoard" resultMap="simpleResultBoard">
+        SELECT board_seq,
+               board_group_num,
+               board_ordered,
+               board_depth,
+               board_title,
+               board_contents,
+               board_post_time,
+               board_id
+        FROM board
+        WHERE board_seq=#{seq}
+    </select>
+
+
+    <!-- 게시글 등록-->
+    <insert id="insertBoard" useGeneratedKeys="true" keyProperty="seq">
+        <selectKey resultType="int" keyProperty="gNum" order="BEFORE">
+            SELECT IFNULL(max(board_seq), 0)+1 from board
+        </selectKey>
+        INSERT INTO board(board_group_num, board_title, board_contents, board_id)
+        VALUES(#{gNum},#{title}, #{contents}, #{id})
+
+    </insert>
+
+    <!-- 게시글 삭제 -->
+    <delete id="deleteBoard">
+        DELETE
+        FROM board
+        WHERE board_seq = #{seq}
+    </delete>
+
+    <!-- 답글쓰기 위한 게시물 상세조회 -->
+    <select id="replayGetSeq" resultMap="simpleResultBoard">
+        SELECT board_seq,
+               board_group_num,
+               board_ordered,
+               board_depth,
+               board_title,
+               board_contents,
+               board_post_time,
+               board_id
+        FROM board
+        WHERE board_seq = #{seq}
+    </select>
+
+    <!-- 답글 등록-->
+    <insert id="insertBoardReplay" useGeneratedKeys="true" keyProperty="seq">
+        INSERT INTO board(board_group_num, board_title, board_contents, board_ordered, board_depth, board_id)
+        VALUES(#{gNum}, #{title}, #{contents}, #{ordered}+1, #{depth}+1, #{id})
+    </insert>
+
+    <!-- 답글 정렬 -->
+    <update id="updateReplayBoard">
+        UPDATE board SET board_ordered=board_ordered+1
+        WHERE board_group_num=#{gNum}
+        AND board_ordered >0
+    </update>
+</mapper>
+

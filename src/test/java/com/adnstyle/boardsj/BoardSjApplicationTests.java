@@ -7,6 +7,7 @@ import com.adnstyle.boardsj.service.MemberService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.servlet.http.HttpSession;
 import java.lang.reflect.Member;
@@ -54,16 +55,18 @@ class BoardSjApplicationTests {
     /*
     * 회원등록 조회
     * */
-    /*@Test
+    @Test
     void signupTest(){
         MemberDto memberDto=new MemberDto();
         memberDto.setId("tjdwns135");
         memberDto.setPw("90931234");
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        memberDto.setPw(passwordEncoder.encode(memberDto.getPw()));
         memberDto.setName("chlasdi1");
-        memberDto.setBirth(LocalDate.parse("1993-02-05"));
+        memberDto.setBirth("19930205");
         int result=ms.signupMember(memberDto);
         System.out.println(result);
-    }*/
+    }
 
     /*
     * 회원삭제 테스트

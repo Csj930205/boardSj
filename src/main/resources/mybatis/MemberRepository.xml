@@ -4,11 +4,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.adnstyle.boardsj.repository.MemberRepository">
-    <resultMap id="simpleResult" type="memberDto">
+    <resultMap id="simpleResult" type="MemberDto">
         <id property="seq" column="member_seq"/>
         <result property="id" column="member_id"/>
         <result property="pw" column="member_pw"/>
         <result property="name" column="member_name"/>
+        <result property="email" column="member_email"/>
         <result property="birth" column="member_birth"/>
         <result property="signupTime" column="member_signup_time"/>
         <result property="grade" column="member_grade"/>
@@ -20,6 +21,7 @@
                member_id,
                member_pw,
                member_name,
+               member_email,
                member_birth,
                member_signup_time,
                member_grade
@@ -32,6 +34,7 @@
                member_id,
                member_pw,
                member_name,
+               member_email,
                member_birth,
                member_signup_time,
                member_grade
@@ -45,12 +48,20 @@
                member_id,
                member_pw,
                member_name,
+               member_email,
                member_birth,
                member_signup_time,
                member_grade
         FROM member
         WHERE member_id = #{id}
           AND member_pw = #{pw}
+    </select>
+
+    <!-- 시큐리티 로그인 구현중 -->
+    <select id="securityLogin" resultMap="simpleResult">
+        SELECT *
+        FROM member
+        WHERE member_id = #{id}
     </select>
 
     <!-- 회원등록 -->
@@ -60,9 +71,10 @@
                     member_id,
                     member_pw,
                     member_name,
+                    member_email,
                     member_birth,
                     member_grade)
-        VALUES (#{seq}, #{id}, #{pw}, #{name}, #{birth}, #{grade})
+        VALUES (#{seq}, #{id}, #{pw}, #{name}, #{email}, #{birth}, #{grade})
 
     </insert>
 
@@ -78,6 +90,7 @@
         UPDATE member
         SET member_pw=#{pw},
             member_name = #{name},
+            member_email = #{email},
             member_birth=#{birth},
             member_grade=#{grade}
         WHERE member_seq = #{seq}
