@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.adnstyle.boardsj.repository.UserRepository">
+    <resultMap id="UserResult" type="com.adnstyle.boardsj.dto.User">
+        <id property="seq" column="user_seq"/>
+        <result property="name" column="user_name"/>
+        <result property="email" column="user_email"/>
+        <result property="picture" column="user_picture"/>
+        <result property="role" column="user_role"/>
+    </resultMap>
+
+    <select id="findByEmail" resultMap="UserResult">
+        SELECT *
+        FROM user
+        WHERE user_email=#{email}
+    </select>
+
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="seq">
+        INSERT
+        INTO user(user_seq,
+                  user_name,
+                  user_email,
+                  user_role)
+        VALUES (#{seq}, #{name}, #{email}, #{role})
+    </insert>
+
+</mapper>

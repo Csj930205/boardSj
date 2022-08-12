@@ -1,7 +1,6 @@
 com\adnstyle\boardsj\dto\Role.class
 com\adnstyle\boardsj\service\BoardService.class
 com\adnstyle\boardsj\repository\BoardRepository.class
-com\adnstyle\boardsj\config\SecurityConfig.class
 com\adnstyle\boardsj\service\MemberService.class
 com\adnstyle\boardsj\dto\MemberDto.class
 com\adnstyle\boardsj\controller\MemberController.class
@@ -9,6 +8,6 @@ com\adnstyle\boardsj\controller\SignupController.class
 com\adnstyle\boardsj\repository\MemberRepository.class
 com\adnstyle\boardsj\controller\BoardController.class
 com\adnstyle\boardsj\controller\DomainController.class
-com\adnstyle\boardsj\dto\MemberDto$MemberDtoBuilder.class
 com\adnstyle\boardsj\BoardSjApplication.class
+com\adnstyle\boardsj\config\auth\SecurityConfig.class
 com\adnstyle\boardsj\dto\BoardDto.class

@@ -5,10 +5,19 @@ spring:
     url: jdbc:mysql://localhost:3306/boardsj?serverTimeZone=UTC&CharacterEncoding=UTF-8
     username: root
     password: mysql
+
   security:
     user:
       name: user
       password: 1234
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 57149116539-gced3kiomrhpnq61c8jhsp96eakjtoh2.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+              - email
 
 #MyBatis 설정
 mybatis:
