@@ -13,6 +13,7 @@
         <result property="birth" column="member_birth"/>
         <result property="signupTime" column="member_signup_time"/>
         <result property="grade" column="member_grade"/>
+        <result property="role" column="member_role"/>
     </resultMap>
 
     <!-- 회원 전체 조회 -->
@@ -73,8 +74,10 @@
                     member_name,
                     member_email,
                     member_birth,
-                    member_grade)
-        VALUES (#{seq}, #{id}, #{pw}, #{name}, #{email}, #{birth}, #{grade})
+                    member_grade,
+                    member_role
+                    )
+        VALUES (#{seq}, #{id}, #{pw}, #{name}, #{email}, #{birth}, #{grade}, #{role})
 
     </insert>
 

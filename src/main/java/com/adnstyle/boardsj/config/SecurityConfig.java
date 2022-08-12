@@ -45,11 +45,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
             .and()
                 .formLogin()
                 .loginPage("/auth/login.do")
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/auth/login_access.do")
                 .failureUrl("/denied/denied.do")
                 .loginProcessingUrl("/login_proc")
-                .permitAll()
-            .and()
+                .permitAll();
+            http
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/auth/logout.do"))
                 .logoutSuccessUrl("/")

@@ -1,5 +1,6 @@
 package com.adnstyle.boardsj.dto;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -24,6 +25,8 @@ public class MemberDto implements UserDetails {
     private String email;
     private LocalDateTime signupTime;
     private int grade;
+    private Role role;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -38,9 +41,6 @@ public class MemberDto implements UserDetails {
     @Override
     public String getUsername() {
         return this.id;
-    }
-    public String getUserName(){
-        return this.name;
     }
 
     @Override

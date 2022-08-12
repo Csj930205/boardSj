@@ -1,8 +1,8 @@
-D:\board\boardSj\src\main\java\com\adnstyle\boardsj\controller\LoginController.java
 D:\board\boardSj\src\main\java\com\adnstyle\boardsj\service\BoardService.java
 D:\board\boardSj\src\main\java\com\adnstyle\boardsj\BoardSjApplication.java
 D:\board\boardSj\src\main\java\com\adnstyle\boardsj\controller\MemberController.java
 D:\board\boardSj\src\main\java\com\adnstyle\boardsj\repository\MemberRepository.java
+D:\board\boardSj\src\main\java\com\adnstyle\boardsj\dto\Role.java
 D:\board\boardSj\src\main\java\com\adnstyle\boardsj\controller\DomainController.java
 D:\board\boardSj\src\main\java\com\adnstyle\boardsj\service\MemberService.java
 D:\board\boardSj\src\main\java\com\adnstyle\boardsj\controller\SignupController.java

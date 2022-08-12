@@ -19,11 +19,6 @@ public interface MemberRepository {
     MemberDto getSeq(int seq);
 
     /*
-    * 로그인
-    * */
-    MemberDto loginMember(String id, String pw);
-
-    /*
     * 로그인(시큐리티)
     * */
     MemberDto securityLogin(String id);

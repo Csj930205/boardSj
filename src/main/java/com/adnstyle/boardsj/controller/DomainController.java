@@ -5,6 +5,7 @@ import com.adnstyle.boardsj.dto.MemberDto;
 import com.adnstyle.boardsj.service.BoardService;
 import com.adnstyle.boardsj.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,17 +54,22 @@ public class DomainController {
         return "auth/login";
     }
 
+    /*
+    * 로그인 실패시 이동
+    * */
     @RequestMapping("/denied/denied.do")
     public String loginDenied(){
         return "denied/denied";
     }
+
     /*
-     * 로그아웃 및 메인페이지로 이동
-     * */
-    @RequestMapping("/auth/logout.do")
-    public String logout(HttpSession session) {
-        session.invalidate();
-        return "redirect:/";
+    * 로그인 성공시 이동
+    * */
+    @RequestMapping("/auth/login_access.do")
+    public String loginAccess(Authentication authentication, HttpSession session){
+        MemberDto memberLoginInfo = (MemberDto) authentication.getPrincipal(); // userDetail 객체를 가져온다
+        session.setAttribute("memberLoginInfo",memberLoginInfo);
+        return "auth/login_access";
     }
 
     /*

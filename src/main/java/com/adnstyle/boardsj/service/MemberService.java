@@ -8,7 +8,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Service
@@ -29,13 +31,6 @@ public class MemberService implements UserDetailsService{
     * */
     public MemberDto getSeq(int seq){
         return memberRepository.getSeq(seq);
-    }
-
-    /*
-    * 로그인
-    * */
-    public MemberDto loginMember(String id, String pw){
-        return memberRepository.loginMember(id, pw);
     }
 
     /*
@@ -61,6 +56,9 @@ public class MemberService implements UserDetailsService{
         return memberRepository.updateMember(memberDto);
     }
 
+    /*
+    * 로그인(시큐리티)
+    * */
     @Override
     public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
         MemberDto memberDto=memberRepository.securityLogin(id);

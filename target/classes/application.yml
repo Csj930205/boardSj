@@ -10,7 +10,6 @@ spring:
       name: user
       password: 1234
 
-
 #MyBatis 설정
 mybatis:
   type-aliases-package: com.adnstyle.boardSJ.dto
@@ -24,3 +23,4 @@ server:
   servlet:
     session:
       timeout: 1800
+

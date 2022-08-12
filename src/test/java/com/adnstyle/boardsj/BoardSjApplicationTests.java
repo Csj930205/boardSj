@@ -46,27 +46,27 @@ class BoardSjApplicationTests {
     /*
      * 로그인정보 테스트
      * */
-    @Test
-    void loginTest(){
-        MemberDto memDto= ms.loginMember("admin","1234");
-        System.out.println(memDto);
-    }
+//    @Test
+//    void loginTest(){
+//        MemberDto memDto= ms.loginMember("admin","1234");
+//        System.out.println(memDto);
+//    }
 
     /*
     * 회원등록 조회
     * */
-    @Test
-    void signupTest(){
-        MemberDto memberDto=new MemberDto();
-        memberDto.setId("tjdwns135");
-        memberDto.setPw("90931234");
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        memberDto.setPw(passwordEncoder.encode(memberDto.getPw()));
-        memberDto.setName("chlasdi1");
-        memberDto.setBirth("19930205");
-        int result=ms.signupMember(memberDto);
-        System.out.println(result);
-    }
+//    @Test
+//    void signupTest(){
+//        MemberDto memberDto=new MemberDto();
+//        memberDto.setId("tjdwns135");
+//        memberDto.setPw("90931234");
+//        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+//        memberDto.setPw(passwordEncoder.encode(memberDto.getPw()));
+//        memberDto.setName("chlasdi1");
+//        memberDto.setBirth("19930205");
+//        int result=ms.signupMember(memberDto);
+//        System.out.println(result);
+//    }
 
     /*
     * 회원삭제 테스트
@@ -105,16 +105,16 @@ class BoardSjApplicationTests {
     /*
     * 게시글 등록 테스트
     * */
-    @Test
-    void boardInsertReplayTest(){
-        MemberDto memberDto = ms.loginMember("admin", "1234");
-        BoardDto boardDto = new BoardDto();
-        boardDto.setTitle("Test");
-        boardDto.setContents("Test");
-        boardDto.setId(memberDto.getId());
-        int result = bs.insertBoard(boardDto);
-        System.out.println(result);
-    }
+//    @Test
+//    void boardInsertReplayTest(){
+//        MemberDto memberDto = ms.loginMember("admin", "1234");
+//        BoardDto boardDto = new BoardDto();
+//        boardDto.setTitle("Test");
+//        boardDto.setContents("Test");
+//        boardDto.setId(memberDto.getId());
+//        int result = bs.insertBoard(boardDto);
+//        System.out.println(result);
+//    }
     /*
     * 게시글 삭제 테스트
     * */

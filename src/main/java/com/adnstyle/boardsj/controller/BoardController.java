@@ -38,7 +38,7 @@ public class BoardController {
     @PostMapping("insertBoard.do")
     public String insertBoard(BoardDto boardDto, HttpSession session){
         int result = 0;
-        MemberDto memberId=(MemberDto) session.getAttribute("loginDto");
+        MemberDto memberId=(MemberDto) session.getAttribute("memberLoginInfo");
         String writer = memberId.getId();
         boardDto.setId(writer);
         result += boardService.insertBoard(boardDto);
@@ -67,7 +67,7 @@ public class BoardController {
      * */
     @PostMapping("insertBoardReplay.do")
     public String insertBoardReplay(BoardDto boardDto, HttpSession session){
-        MemberDto memberId = (MemberDto) session.getAttribute("loginDto");
+        MemberDto memberId = (MemberDto) session.getAttribute("memberLoginInfo");
         String replayWriter = memberId.getId();
         boardDto.setId(replayWriter);
         int insertResult =0;

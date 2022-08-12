@@ -29,6 +29,10 @@
             <input name="name" type="text" class="form-control" id="itemFormName" th:value="${modifyDomain.getName()}">
         </p>
         <p class="input-group">
+            <label for="itemFormEmail" class="input-group-text">Email</label>
+            <input name="email" type="text" class="form-control" id="itemFormEmail" th:value="${modifyDomain.getEmail()}">
+        </p>
+        <p class="input-group">
             <label for="itemFormBirth" class="input-group-text">Birth</label>
             <input name="birth" type="date" class="form-control" id="itemFormBirth"
                    th:value="${modifyDomain.getBirth()}">
