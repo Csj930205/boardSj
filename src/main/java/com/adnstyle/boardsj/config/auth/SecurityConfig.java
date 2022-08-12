@@ -1,5 +1,6 @@
 package com.adnstyle.boardsj.config.auth;
 
+import com.adnstyle.boardsj.dto.Role;
 import com.adnstyle.boardsj.service.CustomOAuth2UserService;
 import com.adnstyle.boardsj.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -42,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests()
-                .antMatchers("/member/**").authenticated()
+                .antMatchers("/member/**").hasRole("GUEST")
                 .antMatchers("/board/**").authenticated()
                 .antMatchers("/**").permitAll()
             .and()
@@ -54,6 +55,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .permitAll()
             .and()
                 .oauth2Login()
+                .defaultSuccessUrl("/")
+                .failureUrl("/denied/denied")
                 .userInfoEndpoint()
                 .userService(customOAuth2UserService);
             http

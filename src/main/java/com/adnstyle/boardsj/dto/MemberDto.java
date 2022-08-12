@@ -1,21 +1,15 @@
 package com.adnstyle.boardsj.dto;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-import org.springframework.format.annotation.DateTimeFormat;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
+import java.util.List;
 
-@Getter
-@Setter
-@ToString
+@Data
 public class MemberDto implements UserDetails {
     private int seq;
     private String id;
@@ -25,7 +19,7 @@ public class MemberDto implements UserDetails {
     private String email;
     private LocalDateTime signupTime;
     private int grade;
-    private Role role;
+    private String role;
 
 
     @Override

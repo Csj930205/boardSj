@@ -22,7 +22,7 @@
         </p>
         <p class="input-group">
             <label for="itemFormPw" class="input-group-text">Pw</label>
-            <input name="pw" type="text" class="form-control" id="itemFormPw" th:value="${modifyDomain.getPw()}">
+            <input name="pw" type="text" class="form-control" id="itemFormPw">
         </p>
         <p class="input-group">
             <label for="itemFormName" class="input-group-text">Name</label>
@@ -34,8 +34,18 @@
         </p>
         <p class="input-group">
             <label for="itemFormBirth" class="input-group-text">Birth</label>
-            <input name="birth" type="date" class="form-control" id="itemFormBirth"
+            <input name="birth" type="text" class="form-control" id="itemFormBirth"
                    th:value="${modifyDomain.getBirth()}">
+        </p>
+        <p class="input-group">
+            <label for="itemFormGrade" class="input-group-text">Grade</label>
+            <input name="grade" type="text" class="form-control" id="itemFormGrade"
+                   th:value="${modifyDomain.getGrade()}" readonly>
+        </p>
+        <p class="input-group">
+            <label for="itemFormRole" class="input-group-text">Role</label>
+            <input name="role" type="text" class="form-control" id="itemFormRole"
+                   th:value="${modifyDomain.getRole()}">
         </p>
         <p class="input-group">
             <label for="itemFormSignupTime" class="input-group-text">SignupTime</label>

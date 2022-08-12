@@ -2,6 +2,7 @@ package com.adnstyle.boardsj.controller;
 
 import com.adnstyle.boardsj.dto.BoardDto;
 import com.adnstyle.boardsj.dto.MemberDto;
+import com.adnstyle.boardsj.dto.User;
 import com.adnstyle.boardsj.service.BoardService;
 import com.adnstyle.boardsj.service.MemberService;
 import lombok.RequiredArgsConstructor;

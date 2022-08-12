@@ -25,7 +25,8 @@
                member_email,
                member_birth,
                member_signup_time,
-               member_grade
+               member_grade,
+               member_role
         FROM member
     </select>
 
@@ -38,7 +39,8 @@
                member_email,
                member_birth,
                member_signup_time,
-               member_grade
+               member_grade,
+               member_role
         FROM member
         WHERE member_seq = #{seq}
     </select>

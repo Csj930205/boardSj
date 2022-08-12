@@ -17,6 +17,7 @@
             <th scope="col">생일</th>
             <th scope="col">가입일</th>
             <th scope="col">등급</th>
+            <th scope="col">권한</th>
             <th scope="col">수정</th>
         </tr>
         </thead>
@@ -29,6 +30,7 @@
             <th scope="row" th:text="${list.birth}"></th>
             <th scope="row" th:text="${list.signupTime}"></th>
             <th scope="row" th:text="${list.grade}"></th>
+            <th scope="row" th:text="${list.role}"></th>
             <th>
                 <a class="btn btn-outline-primary" role="button"
                    th:href="@{/member/modify/{seq}(seq=${list.seq})}">
