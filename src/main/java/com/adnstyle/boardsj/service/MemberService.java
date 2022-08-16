@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import javax.servlet.http.HttpSession;
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -44,9 +45,11 @@ public class MemberService implements UserDetailsService{
     public int signupMember(MemberDto memberDto){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         memberDto.setPw(passwordEncoder.encode(memberDto.getPw()));
+
+//        등급이 0일 시 Role 의 key값인 "ROLE_ADMIN" 1일 시 "USER" 를 부여함
         if(memberDto.getGrade()==0){
             memberDto.setRole(Role.ADMIN.getKey());
-        }else {
+        }else{
             memberDto.setRole(Role.USER.getKey());
         }
         return memberRepository.signupMember(memberDto);
@@ -78,12 +81,8 @@ public class MemberService implements UserDetailsService{
             throw new UsernameNotFoundException("User not authorized");
         }
 
-        List<GrantedAuthority> authorities = new ArrayList<>();
-        if("ROLE_ADMIN".equals(memberDto.getRole().toString())){
-            authorities.add(new SimpleGrantedAuthority(memberDto.getRole()));
-        }else{
-            authorities.add(new SimpleGrantedAuthority(Role.USER.getKey()));
-        }
+//        로그인 정보가 일치 할 시 해당 권한을 반환함
+        memberDto.getAuthorities();
         return memberDto;
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @Data
@@ -21,10 +22,12 @@ public class MemberDto implements UserDetails {
     private int grade;
     private String role;
 
-
+    /*
+     * 권한을 부여 반환
+     * */
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return Collections.singleton(new SimpleGrantedAuthority(this.role));
     }
 
     @Override
