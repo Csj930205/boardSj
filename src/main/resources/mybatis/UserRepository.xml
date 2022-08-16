@@ -12,13 +12,24 @@
         <result property="role" column="user_role"/>
     </resultMap>
 
+    <!-- 소셜가입자 리스트 조회 -->
+    <select id="listUser" resultMap="UserResult">
+        SELECT user_seq,
+               user_name,
+               user_email,
+               user_picture,
+               user_role
+        FROM user
+    </select>
+
+    <!-- 소셜가입자 확인 조회  -->
     <select id="findByEmail" resultMap="UserResult">
         SELECT *
         FROM user
         WHERE user_email=#{email}
     </select>
 
-
+    <!-- 소셜유저 가입 -->
     <insert id="save" useGeneratedKeys="true" keyProperty="seq">
         INSERT
         INTO user(user_seq,

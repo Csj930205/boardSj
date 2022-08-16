@@ -3,7 +3,9 @@ package com.adnstyle.boardsj.dto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
+/*
+* 소셜가입자
+* */
 @Getter
 @NoArgsConstructor
 public class User {
@@ -22,7 +24,7 @@ public class User {
     }
     public User update(String name, String picture){
         this.name = name;
-        this.email = email;
+        this.picture = picture;
         return this;
     }
     public String getRoleKey(){

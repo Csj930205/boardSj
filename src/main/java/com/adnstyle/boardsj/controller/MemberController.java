@@ -1,6 +1,9 @@
 package com.adnstyle.boardsj.controller;
 
 import com.adnstyle.boardsj.dto.MemberDto;
+import com.adnstyle.boardsj.dto.User;
+import com.adnstyle.boardsj.repository.UserRepository;
+import com.adnstyle.boardsj.service.CustomOAuth2UserService;
 import com.adnstyle.boardsj.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -17,14 +20,21 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MemberController {
     private final MemberService memberService;
+    private final CustomOAuth2UserService customOAuth2UserService;
 
     /*
-    * 회원리스트 조회
+    * 회원리스트 조회(소셜회원 리스트 추가)
     * */
     @GetMapping("list.do")
     public String listMember(Model model){
+        //일반가입자 리스트
         List<MemberDto> listMember=memberService.listMember();
         model.addAttribute("listMember",listMember);
+
+        //소셜가입자 리스트
+        List<User> listUser = customOAuth2UserService.listUser();
+        model.addAttribute("listUser",listUser);
+
         return "member/list";
     }
 

@@ -12,12 +12,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.validation.FieldError;
 
 import javax.servlet.http.HttpSession;
 import java.sql.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -45,7 +45,6 @@ public class MemberService implements UserDetailsService{
     public int signupMember(MemberDto memberDto){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         memberDto.setPw(passwordEncoder.encode(memberDto.getPw()));
-
 //        등급이 0일 시 Role 의 key값인 "ROLE_ADMIN" 1일 시 "USER" 를 부여함
         if(memberDto.getGrade()==0){
             memberDto.setRole(Role.ADMIN.getKey());
@@ -54,6 +53,18 @@ public class MemberService implements UserDetailsService{
         }
         return memberRepository.signupMember(memberDto);
     }
+
+    /*
+     * 회원등록시 유효성 검사 체크
+     * */
+//    public Map<String, String> validateHandling(Errors errors){
+//        Map<String, String> validatorResult = new HashMap<>();
+//        for(FieldError error : errors.getFieldErrors()){
+//            String validKeyName = String.format("valid_%s", error.getField());
+//            validatorResult.put(validKeyName, error.getDefaultMessage());
+//        }
+//        return validatorResult;
+//    }
 
     /*
     * 회원 삭제

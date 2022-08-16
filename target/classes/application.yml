@@ -18,6 +18,26 @@ spring:
             client-secret: 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
             scope:
               - email
+              - profile
+          kakao:
+            client-id: de117df7c77c27ef6224c1e24999e14f
+            client-secret: c51e2N0qiR6FVRzYEhzBdzu8wl0MPG5r
+            client-authentication-method: POST
+            #이걸 안넣어주니 오류남
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/{action}/oauth2/code/{registrationId}"
+            scope:
+              - profile_nickname
+              - profile_image
+              - account_email
+            client-name: Kakao
+        provider:
+          kakao:
+            authorization-uri: https://kauth.kakao.com/oauth/authorize
+            token-uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user_name_attribute: id
+
 
 #MyBatis 설정
 mybatis:

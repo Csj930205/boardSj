@@ -40,7 +40,7 @@
             </div>
 
             <div th:if="${session.user}">
-                <b>Email: </b><span th:text="${session.user}?${session.user.email}:''"></span>
+                <b>이름: </b><span th:text="${session.user}?${session.user.name}:''"></span>
                 님 로그인
                 &nbsp;/&nbsp;
                 <a href="/auth/logout.do">
@@ -62,8 +62,8 @@
 <script th:inline="javascript">
     let msg=[[${session.memberLoginInfo}]]
     let msg2=[[${session.user}]]
-    console.log("FormLoginSession: "+msg)
-    console.log("GoogleLoginSession: "+ msg2)
+    console.log("일반회원: "+msg);
+    console.log("소셜회원: "+msg2)
 </script>
 </body>
 </html>

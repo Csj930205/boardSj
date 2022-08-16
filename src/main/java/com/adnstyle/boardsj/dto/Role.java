@@ -2,7 +2,9 @@ package com.adnstyle.boardsj.dto;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-
+/*
+* 권한 부여
+* */
 @Getter
 @RequiredArgsConstructor
 public enum Role {

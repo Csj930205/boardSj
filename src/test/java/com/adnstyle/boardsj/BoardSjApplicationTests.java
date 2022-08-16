@@ -37,11 +37,11 @@ class BoardSjApplicationTests {
     /*
     * 회원 단독 조회 테스트
     * */
-    @Test
-    void oneMemberTest(){
-        MemberDto mdt=ms.getSeq(0);
-        System.out.println(mdt);
-    }
+//    @Test
+//    void oneMemberTest(){
+//        MemberDto mdt=ms.getSeq(0);
+//        System.out.println(mdt);
+//    }
 
     /*
      * 로그인정보 테스트

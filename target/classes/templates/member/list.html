@@ -4,7 +4,7 @@
 </head>
 <body>
 <header th:insert="header.html"></header>
-<h1 style="text-align: center">회원리스트</h1>
+<h1 style="text-align: center">일반회원</h1>
 <br>
 <div class="container">
     <table class="table">
@@ -34,6 +34,36 @@
             <th>
                 <a class="btn btn-outline-primary" role="button"
                    th:href="@{/member/modify/{seq}(seq=${list.seq})}">
+                    상세보기
+                </a>
+            </th>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<h1 style="text-align: center">소셜회원</h1>
+<div class="container">
+    <table class="table">
+        <thead class="thead-light">
+        <tr class="text-center">
+            <th scope="col">회원번호</th>
+            <th scope="col">이름</th>
+            <th scope="col">이메일</th>
+            <th scope="col">사진</th>
+            <th scope="col">등급</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="text-center" th:each="User:${listUser}">
+            <th scope="row" th:text="${User.seq}"></th>
+            <th scope="row" th:text="${User.name}"></th>
+            <th scope="row" th:text="${User.email}"></th>
+            <th scope="row" th:text="${User.picture}"></th>
+            <th scope="row" th:text="${User.role}"></th>
+            <th>
+                <a class="btn btn-outline-primary" role="button"
+                   th:href="@{/member/social/{seq}(seq=${User.seq})}">
                     상세보기
                 </a>
             </th>

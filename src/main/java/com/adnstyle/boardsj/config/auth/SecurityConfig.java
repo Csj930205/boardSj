@@ -46,6 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers("/member/**").hasRole("ADMIN")
                 .antMatchers("/board/**").hasAnyRole("ADMIN", "USER", "GUEST")
                 .antMatchers("/**").permitAll()
+
             .and()
                 .formLogin()
                 .loginPage("/auth/login.do")
@@ -53,23 +54,31 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .failureUrl("/denied/denied.do")
                 .loginProcessingUrl("/login_proc")
                 .permitAll()
+                
             .and()
                 .oauth2Login()
                 .defaultSuccessUrl("/")
                 .failureUrl("/denied/denied")
                 .userInfoEndpoint()
                 .userService(customOAuth2UserService);
+        
             http
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/auth/logout.do"))
                 .logoutSuccessUrl("/")
                 .invalidateHttpSession(true)
+                    
             .and()
                 .exceptionHandling()
                 .accessDeniedPage("/auth/login.do")
+                    
             .and()
                 .csrf().disable();
     }
+    
+    /*
+    * 로그인 요청이 들어온 정보에 대해 검사
+    * */
     public void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.userDetailsService(memberService).passwordEncoder(passwordEncoder());
     }
