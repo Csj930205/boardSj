@@ -13,6 +13,7 @@
         <result property="contents" column="board_contents"/>
         <result property="postTime" column="board_post_time"/>
         <result property="id" column="board_id"/>
+        <result property="name" column="board_name"/>
     </resultMap>
 
     <!-- 게시글 리스트 조회 -->
@@ -24,7 +25,8 @@
                board_title,
                board_contents,
                board_post_time,
-               board_id
+               board_id,
+               board_name
         FROM board
         ORDER BY board_group_num DESC , board_ordered
     </select>
@@ -38,7 +40,8 @@
                board_title,
                board_contents,
                board_post_time,
-               board_id
+               board_id,
+               board_name
         FROM board
         WHERE board_seq=#{seq}
     </select>
@@ -49,8 +52,8 @@
         <selectKey resultType="int" keyProperty="gNum" order="BEFORE">
             SELECT IFNULL(max(board_seq), 0)+1 from board
         </selectKey>
-        INSERT INTO board(board_group_num, board_title, board_contents, board_id)
-        VALUES(#{gNum},#{title}, #{contents}, #{id})
+        INSERT INTO board(board_group_num, board_title, board_contents, board_id, board_name)
+        VALUES(#{gNum},#{title}, #{contents}, #{id}, #{name})
 
     </insert>
 
@@ -70,15 +73,16 @@
                board_title,
                board_contents,
                board_post_time,
-               board_id
+               board_id,
+               board_name
         FROM board
         WHERE board_seq = #{seq}
     </select>
 
     <!-- 답글 등록-->
     <insert id="insertBoardReplay" useGeneratedKeys="true" keyProperty="seq">
-        INSERT INTO board(board_group_num, board_title, board_contents, board_ordered, board_depth, board_id)
-        VALUES(#{gNum}, #{title}, #{contents}, #{ordered}+1, #{depth}+1, #{id})
+        INSERT INTO board(board_group_num, board_title, board_contents, board_ordered, board_depth, board_id, board_name)
+        VALUES(#{gNum}, #{title}, #{contents}, #{ordered}+1, #{depth}+1, #{id}, #{name})
     </insert>
 
     <!-- 답글 정렬 -->

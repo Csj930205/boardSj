@@ -18,7 +18,7 @@
             <th scope="col">가입일</th>
             <th scope="col">등급</th>
             <th scope="col">권한</th>
-            <th scope="col">수정</th>
+            <th scope="col">정보</th>
         </tr>
         </thead>
         <tbody>
@@ -52,6 +52,7 @@
             <th scope="col">이메일</th>
             <th scope="col">사진</th>
             <th scope="col">등급</th>
+            <th scope="col">정보</th>
         </tr>
         </thead>
         <tbody>
@@ -63,7 +64,7 @@
             <th scope="row" th:text="${User.role}"></th>
             <th>
                 <a class="btn btn-outline-primary" role="button"
-                   th:href="@{/member/social/{seq}(seq=${User.seq})}">
+                   th:href="@{/member/socialModify/{seq}(seq=${User.seq})}">
                     상세보기
                 </a>
             </th>

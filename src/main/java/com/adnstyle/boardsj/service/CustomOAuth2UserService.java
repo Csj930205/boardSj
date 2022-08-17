@@ -34,7 +34,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
     }
 
     /*
-    * OAuth2 Google 로그인 처리
+    * OAuth2 로그인 처리
     * */
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
@@ -50,8 +50,8 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 //     OAuthAttributes: attribute를 담을 클래스 (개발자가 생성)
         OAuthAttributes attribues = OAuthAttributes
                 .of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
-        User user = saveOrUpdate(attribues);
 
+        User user = saveOrUpdate(attribues);
 //        SessionUser : 세션에 사용자 정보를 저장하기 위한 DTO 클래스(개발자가 생성)
         httpSession.setAttribute("user", new SessionUser(user));
         return new DefaultOAuth2User(
@@ -62,16 +62,15 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
     }
 
     /*
-    * OAuth2 Google 가입처리
+    * OAuth2 가입처리
     * */
     private User saveOrUpdate(OAuthAttributes attributes){
         User user;
         if(userRepository.findByEmail(attributes.getEmail())!=null){
             user = userRepository.findByEmail(attributes.getEmail());
-        }else {
+        }else{
             user = attributes.toEntity();
             userRepository.save(user);
-            user=userRepository.findByEmail(attributes.getEmail());
         }
         return user;
     }

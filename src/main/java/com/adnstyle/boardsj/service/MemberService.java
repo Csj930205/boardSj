@@ -55,18 +55,6 @@ public class MemberService implements UserDetailsService{
     }
 
     /*
-     * 회원등록시 유효성 검사 체크
-     * */
-//    public Map<String, String> validateHandling(Errors errors){
-//        Map<String, String> validatorResult = new HashMap<>();
-//        for(FieldError error : errors.getFieldErrors()){
-//            String validKeyName = String.format("valid_%s", error.getField());
-//            validatorResult.put(validKeyName, error.getDefaultMessage());
-//        }
-//        return validatorResult;
-//    }
-
-    /*
     * 회원 삭제
     * */
     public int deleteMember(int seq){

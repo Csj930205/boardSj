@@ -1,7 +1,9 @@
 package com.adnstyle.boardsj.controller;
 
+import com.adnstyle.boardsj.config.auth.SessionUser;
 import com.adnstyle.boardsj.dto.BoardDto;
 import com.adnstyle.boardsj.dto.MemberDto;
+import com.adnstyle.boardsj.dto.Role;
 import com.adnstyle.boardsj.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -13,14 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.Objects;
 
 @Controller
 @RequestMapping("/board")
 @RequiredArgsConstructor
 public class BoardController {
     private final BoardService boardService;
-    private final DomainController domainController;
 
     /*
     * 게시판 글 조회 처리
@@ -38,9 +38,11 @@ public class BoardController {
     @PostMapping("insertBoard.do")
     public String insertBoard(BoardDto boardDto, HttpSession session){
         int result = 0;
-        MemberDto memberId=(MemberDto) session.getAttribute("memberLoginInfo");
-        String writer = memberId.getId();
+        MemberDto member=(MemberDto) session.getAttribute("memberLoginInfo");
+        String writer = member.getId();
+        String name = member.getName();
         boardDto.setId(writer);
+        boardDto.setName(name);
         result += boardService.insertBoard(boardDto);
         if(result>0){
             return "redirect:/board/list.do";
@@ -67,9 +69,23 @@ public class BoardController {
      * */
     @PostMapping("insertBoardReplay.do")
     public String insertBoardReplay(BoardDto boardDto, HttpSession session){
+//      일반회원 및 소셜회원 세션정보를 가져옴
         MemberDto memberId = (MemberDto) session.getAttribute("memberLoginInfo");
-        String replayWriter = memberId.getId();
-        boardDto.setId(replayWriter);
+        SessionUser user = (SessionUser) session.getAttribute("user");
+
+//      일반회원 세션값이 존재하지 않을 경우 소셜회원 세션을 이용하여 게시판에 값을 입력해준다.
+        if(memberId!=null){
+            String replayWriter = memberId.getId();
+            String replayName = memberId.getName();
+            boardDto.setId(replayWriter);
+            boardDto.setName(replayName);
+        }else{
+            String userId = user.getEmail();
+            String userName = user.getName();
+            boardDto.setId(userId);
+            boardDto.setName(userName);
+        }
+//      답글 등록 전 게시물 순서를 위해 업데이트 이후 등록
         int insertResult =0;
         insertResult += boardService.updateReplayBoard(boardDto);
         insertResult += boardService.insertBoardReplay(boardDto);

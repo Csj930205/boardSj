@@ -19,7 +19,7 @@
                 </td>
                 <th>작성자</th>
                 <td>
-                    <input id="id" name="id" th:value="${session.memberLoginInfo.getId()}" disabled>
+                    <input id="name" name="name" th:value="${session.memberLoginInfo}?${session.memberLoginInfo.getName()}:${session.user.getName()}" disabled>
                 </td>
                 <td>
                     <input type="text" id="gNum" name="gNum" th:value="${replayBoard.getGNum()}" hidden>

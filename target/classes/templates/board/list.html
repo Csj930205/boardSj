@@ -15,6 +15,7 @@
         <tr class="text-center">
             <th scope="col">게시번호</th>
             <th scope="col">제목</th>
+            <th scope="col">아이디</th>
             <th scope="col">작성자</th>
             <th scope="col">작성일</th>
             <th scope="col">상세보기</th>
@@ -26,6 +27,7 @@
             <th scope="row" th:text="${list.seq}"></th>
             <th scope="row" th:text="${list.title}"></th>
             <th scope="row" th:text="${list.id}"></th>
+            <th scope="row" th:text="${list.name}"></th>
             <th scope="row" th:text="${list.postTime}"></th>
             <th>
                 <a class="btn btn-outline-primary" role="button"

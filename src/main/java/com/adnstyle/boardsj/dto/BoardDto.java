@@ -19,4 +19,5 @@ public class BoardDto {
     private String contents;
     private LocalDateTime postTime;
     private String id;
+    private String name;
 }
