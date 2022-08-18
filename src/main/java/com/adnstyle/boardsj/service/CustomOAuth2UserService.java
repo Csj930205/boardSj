@@ -19,6 +19,9 @@ import javax.servlet.http.HttpSession;
 import java.util.Collections;
 import java.util.List;
 
+/*
+* 구글 로그인 이후 가져온 사용자의 정보를 기반으로 가입 및 정보수정, 세션 저장등의 기능을 지원
+* */
 @Transactional
 @RequiredArgsConstructor
 @Service
@@ -40,19 +43,21 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
         OAuth2UserService<OAuth2UserRequest, OAuth2User> delegate = new DefaultOAuth2UserService();
         OAuth2User oAuth2User = delegate.loadUser(userRequest);
-//        현재 로그인 진행 중인 서비스를 구분 코드
+
+//          현재 로그인 진행 중인 서비스를 구분 코드(Ex. google , Kakao)
         String registrationId = userRequest.getClientRegistration().getRegistrationId();
 
-//        oauth2 로그인 진행 시 키가 되는 필드값
+//          oauth2 로그인 진행 시 키가 되는 필드(PK)값(google default = 'sub', kakao는 지원 x)
         String userNameAttributeName = userRequest.getClientRegistration()
                 .getProviderDetails().getUserInfoEndpoint().getUserNameAttributeName();
 
-//     OAuthAttributes: attribute를 담을 클래스 (개발자가 생성)
+//          OAuthAttributes: attribute를 담을 클래스
         OAuthAttributes attribues = OAuthAttributes
                 .of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
         User user = saveOrUpdate(attribues);
-//        SessionUser : 세션에 사용자 정보를 저장하기 위한 DTO 클래스(개발자가 생성)
+
+//          SessionUser : 세션에 사용자 정보를 저장하기 위한 DTO 클래스
         httpSession.setAttribute("user", new SessionUser(user));
         return new DefaultOAuth2User(
                 Collections.singleton(new SimpleGrantedAuthority(user.getRoleKey())),

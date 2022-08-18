@@ -18,4 +18,11 @@ public class ItemService{
     public List<ItemDto> listItem(){
         return itemRepository.listItem();
     }
+
+    /*
+    * 상품 등록
+    * */
+    public int itemInsert(ItemDto itemDto){
+        return itemRepository.itemInsert(itemDto);
+    }
 }

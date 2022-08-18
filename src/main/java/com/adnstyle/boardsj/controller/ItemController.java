@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class ItemController {
     private final ItemService itemService;
 
     /*
-    * 아이템 리스트 조회
+    * 상품리스트 전체조회
     * */
     @GetMapping("itemList")
     public String listItem(Model model){
@@ -25,4 +26,18 @@ public class ItemController {
         model.addAttribute("itemList",itemList);
         return "item/itemList";
     }
+
+    /*
+    * 상품 등록
+    * */
+    @PostMapping("insertItem")
+    public String itemInsert(ItemDto itemDto){
+        int result = itemService.itemInsert(itemDto);
+        if(result>0){
+            return "redirect:/item/itemList";
+        }else {
+            return "redirect:/item/itemInsert";
+        }
+    }
+
 }

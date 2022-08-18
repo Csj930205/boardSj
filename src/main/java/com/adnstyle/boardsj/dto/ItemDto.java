@@ -9,7 +9,6 @@ public class ItemDto {
     private int seq;
     private String name;
     private String title;
-    private int count;
     private int price;
     private String color;
     private String mainImg;

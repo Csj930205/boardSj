@@ -1,11 +1,11 @@
-<html lang="en" xmlns:th="http:/www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
 </head>
 <body>
 <header th:insert="header.html"></header>
 <h1 style="text-align: center">아이템등록 페이지</h1>
-<form action="/item/itemInsert" method="post" name="item">
+<form action="/item/insertItem" method="post">
     <p>
         <label>
             상품명: <input type="text" name="name" value="컨버스 신발">
@@ -28,7 +28,7 @@
     </p>
     <p>
         <label>
-            게시자: <input type="text" name="memberId" value="admin" readonly>
+            게시자: <input type="text" name="memberId" th:value="${session.memberLoginInfo}?${session.memberLoginInfo.id}:${session.user.email}" disabled>
         </label>
     </p>
 

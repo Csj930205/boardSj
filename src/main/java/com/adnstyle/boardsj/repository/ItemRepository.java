@@ -12,4 +12,9 @@ public interface ItemRepository {
     * 상품리스트 전체조회
     * */
     List<ItemDto> listItem();
+
+    /*
+    * 상품 등록
+    * */
+    int itemInsert(ItemDto itemDto);
 }

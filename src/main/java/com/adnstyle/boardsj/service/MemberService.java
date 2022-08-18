@@ -44,7 +44,7 @@ public class MemberService implements UserDetailsService{
     * */
     public int signupMember(MemberDto memberDto){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        memberDto.setPw(passwordEncoder.encode(memberDto.getPw()));
+        memberDto.setPw(passwordEncoder.encode(memberDto.getPw()));  // 비밀번호 암호화
 //        등급이 0일 시 Role 의 key값인 "ROLE_ADMIN" 1일 시 "USER" 를 부여함
         if(memberDto.getGrade()==0){
             memberDto.setRole(Role.ADMIN.getKey());
@@ -66,22 +66,22 @@ public class MemberService implements UserDetailsService{
     * */
     public int updateMember(MemberDto memberDto){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        memberDto.setPw(passwordEncoder.encode(memberDto.getPw()));
+        memberDto.setPw(passwordEncoder.encode(memberDto.getPw()));  // 비밀번호 암호화
         return memberRepository.updateMember(memberDto);
     }
 
     /*
-    * 로그인(시큐리티)
+    * UserDetailsService의 loadUserByUsername을 override하여 username이 DB에 있는지를 확인
+    * password의 경우 security에서 자동으로 처리해준다.
+    * 로그인을 요청을 가로챌 때(SecurityConfig => loginProcessingUrl) username과 password 변수를 가로챈다.
     * */
     @Override
     public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
         MemberDto memberDto=memberRepository.securityLogin(id);
-        if(memberDto == null){
+        if( memberDto == null){
             throw new UsernameNotFoundException("User not authorized");
         }
-
-//        로그인 정보가 일치 할 시 해당 권한을 반환함
-        memberDto.getAuthorities();
+        memberDto.getAuthorities(); // 로그인 인증이 완료되었을 때 해당 권한을 반환한다.
         return memberDto;
     }
 }

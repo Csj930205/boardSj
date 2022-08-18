@@ -25,18 +25,6 @@ public class SignupController {
      * */
     @PostMapping("signup.do")
     public String signupMember(MemberDto memberDto) {
-//        if (errors.hasErrors()) {
-//            // 회원가입 실패시, 입력 데이터 유지
-//            model.addAttribute("memberDto", memberDto);
-//            // 유효성 통과 못한 필드와 메세지를 핸들링
-//            Map<String, String> validatorResult = memberService.validateHandling(errors);
-//            for (String key : validatorResult.keySet()) {
-//                model.addAttribute(key, validatorResult.get(key));
-//            }
-//            return "redirect:/signup/signup.do";
-//        }
-
-        // 회원가입 처리
         int result = memberService.signupMember(memberDto);
         if (result > 0) {
             return "redirect:/";

@@ -8,7 +8,6 @@
         <id property="seq" column="item_seq"/>
         <result property="name" column="item_name"/>
         <result property="title" column="item_title"/>
-        <result property="count" column="item_count"/>
         <result property="price" column="item_price"/>
         <result property="color" column="item_color"/>
         <result property="mainImg" column="item_main_img"/>
@@ -24,7 +23,6 @@
         SELECT item_seq,
                item_name,
                item_title,
-               item_count,
                item_price,
                item_color,
                item_main_img,
@@ -36,5 +34,21 @@
         FROM item
     </select>
 
+    <!-- 아이템 등록 -->
+    <insert id="itemInsert" useGeneratedKeys="true" keyProperty="seq">
+        INSERT INTO item(item_seq,
+                         item_name,
+                         item_title,
+                         item_price,
+                         item_color,
+                         item_main_img,
+                         item_detail_img,
+                         item_member_id,
+                         item_post_time,
+                         item_state,
+                         item_category_num)
+        VALUES (#{seq}, #{name}, #{title}, #{price}, #{color}, #{mainImg}, #{detailImg}, #{memberId}, #{postTime},
+                #{state}, #{categoryNum})
+    </insert>
 </mapper>
 

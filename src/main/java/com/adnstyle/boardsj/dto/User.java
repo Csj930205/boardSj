@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /*
-* 소셜가입자
+* 소셜가입자 정보 담당
 * */
 @Getter
 @Setter
