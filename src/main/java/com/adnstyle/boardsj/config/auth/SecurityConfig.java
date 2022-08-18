@@ -52,6 +52,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
             4. DB에 존재하지 않는 사용자의 경우 새로 등록.
             5. 기존 등록자의 경우 정보 업데이트 진행
 
+            Spring Security에서 제공하는 Provider가 OAuth2 인증 단계에서 권한 서버와 토큰서버에 ID와
+            Secret을 수동으로 HTTP API를 요청하는 코드를 구현하지 않아도 된다.
+
      */
     private final CustomOAuth2UserService customOAuth2UserService;
     private final MemberService memberService;

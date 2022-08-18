@@ -1,12 +1,12 @@
 package com.adnstyle.boardsj.dto;
 
-import com.adnstyle.boardsj.service.CustomOAuth2UserService;
 import lombok.Builder;
 import lombok.Getter;
-
-import java.awt.*;
 import java.util.Map;
 
+/*
+* 소셜 사용자의 정보를 담을 클래스
+* */
 @Getter
 public class OAuthAttributes {
     private Map<String, Object> attributes;
