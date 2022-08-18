@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.adnstyle.boardsj.repository.ItemRepository">
+    <resultMap id="simpleResultItem" type="ItemDto">
+        <id property="seq" column="item_seq"/>
+        <result property="name" column="item_name"/>
+        <result property="title" column="item_title"/>
+        <result property="count" column="item_count"/>
+        <result property="price" column="item_price"/>
+        <result property="color" column="item_color"/>
+        <result property="mainImg" column="item_main_img"/>
+        <result property="detailImg" column="item_detail_img"/>
+        <result property="memberId" column="item_member_id"/>
+        <result property="postTime" column="item_post_time"/>
+        <result property="state" column="item_state"/>
+        <result property="categoryNum" column="item_category_num"/>
+    </resultMap>
+
+    <!-- 아이템 리스트 조회 -->
+    <select id="listItem" resultMap="simpleResultItem">
+        SELECT item_seq,
+               item_name,
+               item_title,
+               item_count,
+               item_price,
+               item_color,
+               item_main_img,
+               item_detail_img,
+               item_member_id,
+               item_post_time,
+               item_state,
+               item_category_num
+        FROM item
+    </select>
+
+</mapper>
+

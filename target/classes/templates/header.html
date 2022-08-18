@@ -27,6 +27,11 @@
                         회원관리
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class=nav-link href="/item/itemList">
+                        상품관리
+                    </a>
+                </li>
             </ul>
             <div th:if="${session.memberLoginInfo}">
                 <b>Id: </b><span th:text="${session.memberLoginInfo}?${session.memberLoginInfo.id}:''"></span>

@@ -37,9 +37,10 @@ public class BoardController {
      * */
     @PostMapping("insertBoard.do")
     public String insertBoard(BoardDto boardDto, HttpSession session) {
+//      일반회원 및 소셜회원 세션정보를 가져옴
         MemberDto memberInsertSession = (MemberDto) session.getAttribute("memberLoginInfo");
         SessionUser userSession = (SessionUser) session.getAttribute("user");
-
+//      일반회원 세션값이 존재하지 않을 경우 소셜회원 세션을 이용하여 게시판에 값을 입력해준다.
         if (memberInsertSession != null) {
             String writer = memberInsertSession.getId();
             String name = memberInsertSession.getName();

@@ -1,0 +1,68 @@
+<html lang="en" xmlns:th="http:/www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<header th:insert="header.html"></header>
+<h1 style="text-align: center">아이템등록 페이지</h1>
+<form action="/item/itemInsert" method="post" name="item">
+    <p>
+        <label>
+            상품명: <input type="text" name="name" value="컨버스 신발">
+        </label>
+    </p>
+    <p>
+        <label>
+            타이틀: <input type="text" name="title" value="컨버스">
+        </label>
+    </p>
+    <p>
+        <label>
+            가격: <input type="number" name="price" value="50000">
+        </label>
+    </p>
+    <p>
+        <label>
+            색상: <input type="color" name="color">
+        </label>
+    </p>
+    <p>
+        <label>
+            게시자: <input type="text" name="memberId" value="admin" readonly>
+        </label>
+    </p>
+
+    <p>
+        <label>
+            상품이미지: <input type="file" name="mainImg">
+        </label>
+    </p>
+    <p>
+        <label>
+            상품상세이미지: <input type="file" name="detailImg">
+        </label>
+    </p>
+    <p>
+        <label>
+            카테고리: <select size="1" name="categoryNum">
+            <option value="1" selected>신발</option>
+            <option value="2">상의</option>
+            <option value="3">하의</option>
+        </select>
+        </label>
+    </p>
+    <p>
+        <label>
+            상태: <select size="1" name="state">
+            <option value="1" selected>공개</option>
+            <option value="2">비공개</option>
+        </select>
+        </label>
+    </p>
+    <p>
+        <button type="reset">리셋</button>
+        <button type="submit">제출</button>
+    </p>
+</form>
+</body>
+</html>

@@ -109,4 +109,19 @@ public class DomainController {
         return "board/replay";
     }
 
+    /*
+    * 상품리스트 페이지 이동
+    * */
+    @RequestMapping("/item/itemList")
+    public String itemList(){
+        return "/item/itemList";
+    }
+
+    /*
+    * 상품등록 페이지 이동
+    * */
+    @RequestMapping("/item/itemInsert")
+    public String itemInsert(){
+        return "/item/itemInsert";
+    }
 }

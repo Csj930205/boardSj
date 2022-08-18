@@ -1,0 +1,56 @@
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta carset="UTF-8">
+</head>
+<body>
+<header th:insert="header.html"></header>
+<h1 style="text-align: center">상품리스트</h1>
+<br>
+<div class="container">
+    <table class="table">
+        <thead class="thead-light">
+        <tr class="text-center">
+            <th scope="col">상품번호</th>
+            <th scope="col">상품명</th>
+            <th scope="col">타이틀</th>
+            <th scope="col">수량</th>
+            <th scope="col">가격</th>
+            <th scope="col">상품이미지</th>
+            <th scope="col">상품등록자</th>
+            <th scope="col">상품등록시간</th>
+            <th scope="col">상태</th>
+            <th scope="col">분류</th>
+            <th scope="col">상세보기</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="text-center" th:each="list:${itemList}">
+            <th scope="row" th:text="${list.seq}"></th>
+            <th scope="row" th:text="${list.name}"></th>
+            <th scope="row" th:text="${list.title}"></th>
+            <th scope="row" th:text="${list.count}"></th>
+            <th scope="row" th:text="${list.price}"></th>
+            <th scope="row" th:text="${list.color}"></th>
+            <th scope="row" th:text="${list.mainImg}"></th>
+            <th scope="row" th:text="${list.memberId}"></th>
+            <th scope="row" th:text="${list.mainImg}"></th>
+            <th scope="row" th:text="${list.postTime}"></th>
+            <th scope="row" th:text="${list.state}"></th>
+            <th scope="row" th:text="${list.categoryNum}"></th>
+            <th>
+                <a class="btn btn-outline-primary" role="button"
+                   th:href="@{/item/itemModify/{seq}(seq=${list.seq})}">
+                    상세보기
+                </a>
+            </th>
+        </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-auto">
+            <a class="btn btn-outline-primary" href="/item/itemInsert" role="button">상품등록</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
