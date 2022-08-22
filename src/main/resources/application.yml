@@ -1,4 +1,4 @@
-#MY-SQL 설정
+#   MY-SQL 설정
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -6,11 +6,20 @@ spring:
     username: root
     password: mysql
 
+#   file-upload 위치 설정
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+      location: D:\\board\\file
+
+#   security 설정
   security:
     user:
       name: user
       password: 1234
 
+#   OAuth2 설정
     oauth2:
       client:
         registration:
@@ -39,14 +48,14 @@ spring:
             user_name_attribute: id
 
 
-#MyBatis 설정
+#   MyBatis 설정
 mybatis:
   type-aliases-package: com.adnstyle.boardSJ.dto
   mapper-locations: classpath:mybatis/*.xml
   configuration:
     map-underscore-to-camel-case: true
 
-#Server 설정
+#   Server 설정
 server:
   port: 8081
   servlet:

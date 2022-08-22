@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.adnstyle.boardsj.repository.AttachRepository">
+    <resultMap id="simpleResultAttach" type="AttachDto">
+        <id property="seq" column="attach_seq"/>
+        <result property="refKey" column="attach_ref_key"/>
+        <result property="displayName" column="attach_display_name"/>
+        <result property="saveName" column="attach_save_name"/>
+        <result property="size" column="attach_size"/>
+        <result property="postTime" column="attach_post_time"/>
+    </resultMap>
+
+    <!-- 파일 업로드 내용 -->
+    <insert id="attachInsert" useGeneratedKeys="true" keyProperty="seq">
+         insert into attach(
+                            attach_seq, attach_
+         )
+    </insert>
+</mapper>

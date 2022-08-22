@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.adnstyle.boardsj.BoardSjApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.848 s - in com.adnstyle.boardsj.BoardSjApplicationTests
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.11 s - in com.adnstyle.boardsj.BoardSjApplicationTests

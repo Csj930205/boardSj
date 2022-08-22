@@ -32,9 +32,9 @@
             <p class="input-group">
                 <label class="input-group-text">카테고리</label>
                 <select name="categoryNum" class="form-control" th:value="${modifyList.categoryNum}">
-                    <option value="1">신발</option>
-                    <option value="2">상의</option>
-                    <option value="2">하의</option>
+                    <option value="1">신발(1)</option>
+                    <option value="2">상의(2)</option>
+                    <option value="2">하의(3)</option>
                 </select>
             </p>
             <p class="input-group">
@@ -42,14 +42,10 @@
                 <input name="mainImg" type="file" class="form-control" th:value="${modifyList.mainImg}">
             </p>
             <p class="input-group">
-                <label class="input-group-text">상품상세이미지</label>
-                <input name="detailImg" type="file" class="form-control" th:value="${modifyList.detailImg}">
-            </p>
-            <p class="input-group">
                 <label class="input-group-text">상태</label>
                 <select name="state" class="form-control" th:value="${modifyList.state}">
-                    <option value="1" selected>공개</option>
-                    <option value="2">비공개</option>
+                    <option value="1" selected>공개(1)</option>
+                    <option value="2">비공개(2)</option>
                 </select>
             </p>
             <p class="d-grid gap-2 d-md-flex justify-content-md-end">

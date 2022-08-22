@@ -11,7 +11,6 @@
         <result property="price" column="item_price"/>
         <result property="color" column="item_color"/>
         <result property="mainImg" column="item_main_img"/>
-        <result property="detailImg" column="item_detail_img"/>
         <result property="memberId" column="item_member_id"/>
         <result property="postTime" column="item_post_time"/>
         <result property="state" column="item_state"/>
@@ -26,7 +25,6 @@
                item_price,
                item_color,
                item_main_img,
-               item_detail_img,
                item_member_id,
                item_post_time,
                item_state,
@@ -42,7 +40,6 @@
                item_price,
                item_color,
                item_main_img,
-               item_detail_img,
                item_member_id,
                item_post_time,
                item_state,
@@ -58,11 +55,10 @@
                          item_price,
                          item_color,
                          item_main_img,
-                         item_detail_img,
                          item_member_id,
                          item_state,
                          item_category_num)
-        VALUES (#{name}, #{title}, #{price}, #{color}, #{mainImg}, #{detailImg}, #{memberId},
+        VALUES (#{name}, #{title}, #{price}, #{color}, #{mainImg}, #{memberId},
                 #{state}, #{categoryNum})
     </insert>
 
@@ -73,8 +69,8 @@
             item_title=#{title},
             item_price=#{price},
             item_main_img=#{mainImg},
-            item_detail_img=#{detailImg},
-            item_state=#{state}
+            item_state=#{state},
+            item_category_num=#{categoryNum}
         WHERE item_seq=#{seq}
     </update>
 
