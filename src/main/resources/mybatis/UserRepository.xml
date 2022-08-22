@@ -35,8 +35,9 @@
         INTO user(user_seq,
                   user_name,
                   user_email,
+                  user_picture,
                   user_role)
-        VALUES (#{seq}, #{name}, #{email}, #{role})
+        VALUES (#{seq}, #{name}, #{email}, #{picture}, #{role})
     </insert>
 
 </mapper>

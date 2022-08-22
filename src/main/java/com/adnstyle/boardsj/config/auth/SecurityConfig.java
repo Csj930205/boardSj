@@ -113,7 +113,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                     
             .and()
                 .exceptionHandling()
-                .accessDeniedPage("/auth/login.do")
+                .accessDeniedPage("/auth/login.do") // 로그인하지 않은 사용자가 접근시 이동시킬 페이지
 
             .and()
                 .csrf().disable(); //csrf 토큰 비활성화(시큐리티의 경우 csrf토큰이 있어야 접근이 가능함으로 비활성화)

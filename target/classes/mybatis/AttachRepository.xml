@@ -13,18 +13,13 @@
         <result property="postTime" column="attach_post_time"/>
     </resultMap>
 
-    <!-- 파일 리스트 조회 -->
-    <select id="listAttach" resultMap="simpleResultAttach">
-        SELECT board_seq,
-               board_group_num,
-               board_ordered,
-               board_depth,
-               board_title,
-               board_contents,
-               board_post_time,
-               board_id,
-               board_name
-        FROM board
-        ORDER BY board_group_num DESC , board_ordered
-    </select>
+    <!-- 파일 업로드 내용 -->
+    <insert id="attachInsert" useGeneratedKeys="true" keyProperty="seq">
+        insert into attach(attach_seq,
+                           attach_ref_key,
+                           attach_display_name,
+                           attach_save_name,
+                           attach_size,)
+        VALUES (#{seq}, #{refKey}, #{displayName}, #{saveName}, #{size})
+    </insert>
 </mapper>

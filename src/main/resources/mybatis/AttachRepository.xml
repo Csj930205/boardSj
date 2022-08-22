@@ -13,10 +13,16 @@
         <result property="postTime" column="attach_post_time"/>
     </resultMap>
 
+    <select id="attachList" resultMap="simpleResultAttach">
+        SELECT *
+        FROM attach
+    </select>
     <!-- 파일 업로드 내용 -->
     <insert id="attachInsert" useGeneratedKeys="true" keyProperty="seq">
-         insert into attach(
-                            attach_seq, attach_
-         )
+        insert into attach(attach_ref_key,
+                           attach_display_name,
+                           attach_save_name,
+                           attach_size,)
+        VALUES (#{refKey}, #{displayName}, #{saveName}, #{size})
     </insert>
 </mapper>

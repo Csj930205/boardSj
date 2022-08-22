@@ -1,10 +1,14 @@
 package com.adnstyle.boardsj.service;
 
 import com.adnstyle.boardsj.dto.ItemDto;
+import com.adnstyle.boardsj.dto.MemberDto;
+import com.adnstyle.boardsj.dto.User;
 import com.adnstyle.boardsj.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Service
@@ -30,7 +34,6 @@ public class ItemService{
     * */
     public int itemInsert(ItemDto itemDto){
         return itemRepository.itemInsert(itemDto);
-
     }
 
     /*
