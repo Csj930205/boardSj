@@ -20,9 +20,30 @@ public class ItemService{
     }
 
     /*
+    * 상품 개별조회
+    * */
+    public ItemDto getList(int seq){
+        return itemRepository.getList(seq);
+    }
+    /*
     * 상품 등록
     * */
     public int itemInsert(ItemDto itemDto){
         return itemRepository.itemInsert(itemDto);
+
+    }
+
+    /*
+    * 상품 수정
+    * */
+    public int itemUpdate(ItemDto itemDto){
+        return itemRepository.itemUpdate(itemDto);
+    }
+
+    /*
+    * 상품 삭제
+    * */
+    public int deleteItem(int seq){
+        return itemRepository.deleteItem(seq);
     }
 }

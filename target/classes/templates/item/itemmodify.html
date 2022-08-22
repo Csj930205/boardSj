@@ -1,0 +1,64 @@
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta carset="UTF-8">
+</head>
+<body>
+<header th:insert="header.html"></header>
+<h1 style="text-align: center">상품수정</h1>
+<br>
+<div class="container">
+    <div class="d-flex justify-content-center align-items-center" style="height:clac(100vh -200px)">
+        <form action="/item/itemUpdate" method="post">
+            <p class="input-group">
+                <label class="input-group-text">상품번호</label>
+                <input name="seq" type="text" class="form-control" th:value="${modifyList.seq}" readonly>
+            </p>
+            <p class="input-group">
+                <label class="input-group-text">상품이름</label>
+                <input name="name" type="text" class="form-control" th:value="${modifyList.name}">
+            </p>
+            <p class="input-group">
+                <label class="input-group-text">타이틀</label>
+                <input name="title" type="text" class="form-control" th:value="${modifyList.title}">
+            </p>
+            <p class="input-group">
+                <label class="input-group-text">가격</label>
+                <input name="price" type="number" class="form-control" th:value="${modifyList.price}">
+            </p>
+            <p class="input-group">
+                <label class="input-group-text">게시자</label>
+                <input name="id" type="text" class="form-control" th:value="${session.memberLoginInfo}?${session.memberLoginInfo.id}:${session.user.email}" readonly>
+            </p>
+            <p class="input-group">
+                <label class="input-group-text">카테고리</label>
+                <select name="categoryNum" class="form-control" th:value="${modifyList.categoryNum}">
+                    <option value="1">신발</option>
+                    <option value="2">상의</option>
+                    <option value="2">하의</option>
+                </select>
+            </p>
+            <p class="input-group">
+                <label class="input-group-text">상품메인이미지</label>
+                <input name="mainImg" type="file" class="form-control" th:value="${modifyList.mainImg}">
+            </p>
+            <p class="input-group">
+                <label class="input-group-text">상품상세이미지</label>
+                <input name="detailImg" type="file" class="form-control" th:value="${modifyList.detailImg}">
+            </p>
+            <p class="input-group">
+                <label class="input-group-text">상태</label>
+                <select name="state" class="form-control" th:value="${modifyList.state}">
+                    <option value="1" selected>공개</option>
+                    <option value="2">비공개</option>
+                </select>
+            </p>
+            <p class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a class="btn btn-outline-danger" th:href="@{/item/delete/{seq}/(seq=${modifyList.seq})}">삭제</a>
+                <button class="btn btn-outline-warning " type="reset">리셋</button>
+                <button class="btn btn-outline-primary " type="submit">수정</button>
+            </p>
+        </form>
+    </div>
+</div>
+</body>
+</html>

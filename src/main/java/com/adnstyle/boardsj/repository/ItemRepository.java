@@ -14,7 +14,22 @@ public interface ItemRepository {
     List<ItemDto> listItem();
 
     /*
+    * 상품 개별 조회
+    * */
+    ItemDto getList(int seq);
+
+    /*
     * 상품 등록
     * */
     int itemInsert(ItemDto itemDto);
+
+    /*
+    * 상품 수정
+    * */
+    int itemUpdate(ItemDto itemDto);
+
+    /*
+    * 상품 삭제
+    * */
+    int deleteItem(int seq);
 }

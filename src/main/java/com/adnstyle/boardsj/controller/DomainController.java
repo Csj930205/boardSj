@@ -1,9 +1,11 @@
 package com.adnstyle.boardsj.controller;
 
 import com.adnstyle.boardsj.dto.BoardDto;
+import com.adnstyle.boardsj.dto.ItemDto;
 import com.adnstyle.boardsj.dto.MemberDto;
 import com.adnstyle.boardsj.dto.User;
 import com.adnstyle.boardsj.service.BoardService;
+import com.adnstyle.boardsj.service.ItemService;
 import com.adnstyle.boardsj.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -20,6 +22,7 @@ import javax.servlet.http.HttpSession;
 public class DomainController {
     private final MemberService memberService;
     private final BoardService boardService;
+    private final ItemService itemService;
 
     /*
      * 메인페이지 이동
@@ -123,5 +126,15 @@ public class DomainController {
     @RequestMapping("/item/itemInsert")
     public String itemInsert(){
         return "/item/itemInsert";
+    }
+
+    /*
+    * 상품상세페이지 이동
+    * */
+    @RequestMapping("/item/itemmodify/{seq}")
+    public String getList(@PathVariable("seq")int seq, Model model){
+        ItemDto modifyList = itemService.getList(seq);
+        model.addAttribute("modifyList",modifyList);
+        return "/item/itemmodify";
     }
 }

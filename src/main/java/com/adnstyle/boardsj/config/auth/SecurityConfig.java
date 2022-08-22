@@ -26,10 +26,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         1) Spring Security 인증 진행 순서
             1. 시큐리티가 /login 주소 요청이 오면 낚아채서 로그인 진행
             2. 로그인 진행이 완료되면 시큐리티 session을 만들어줍니다 (Security ContextHolder)
-            3. 인증 오브젝트 Authentication 타입 객체
-            4. Authentication 안에 User 정보가 포함되어야 한다.
-            5. User(MemberDto) 오브젝트타입은 UserDetails 타입 객체로 커스텀을 하려면 상속받아 작성해야 한다.
-            6. getAuthorities 메소드는 인증하는 User(MemberDto)가 어떤 종류의 권한을 설정.
+            3. 인증 오브젝트 Authentication 타입 객체안에 User(MemberDto) 정보가 포함되어야 한다.
+            4. User(MemberDto) 오브젝트타입은 UserDetails 타입 객체로 커스텀을 하려면 상속받아 작성해야 한다.
+            5. getAuthorities 메소드는 인증하는 User(MemberDto)가 어떤 종류의 권한을 설정.
 
         2) Spring Security 인증 시스템 작동 방식
             1. 시큐리티 설정에서 loginProcessingUrl 요청이 오게되면 자동으로 UserDetailsService의 loadUserByUsername 함수가 실행됨

@@ -18,7 +18,7 @@
         <result property="categoryNum" column="item_category_num"/>
     </resultMap>
 
-    <!-- 아이템 리스트 조회 -->
+    <!-- 상품 리스트 조회 -->
     <select id="listItem" resultMap="simpleResultItem">
         SELECT item_seq,
                item_name,
@@ -34,21 +34,55 @@
         FROM item
     </select>
 
-    <!-- 아이템 등록 -->
+    <!-- 상품 개별 조회 -->
+    <select id="getList" resultMap="simpleResultItem">
+        SELECT item_seq,
+               item_name,
+               item_title,
+               item_price,
+               item_color,
+               item_main_img,
+               item_detail_img,
+               item_member_id,
+               item_post_time,
+               item_state,
+               item_category_num
+        FROM item
+        WHERE item_seq = #{seq}
+    </select>
+
+    <!-- 상품 등록 -->
     <insert id="itemInsert" useGeneratedKeys="true" keyProperty="seq">
-        INSERT INTO item(item_seq,
-                         item_name,
+        INSERT INTO item(item_name,
                          item_title,
                          item_price,
                          item_color,
                          item_main_img,
                          item_detail_img,
                          item_member_id,
-                         item_post_time,
                          item_state,
                          item_category_num)
-        VALUES (#{seq}, #{name}, #{title}, #{price}, #{color}, #{mainImg}, #{detailImg}, #{memberId}, #{postTime},
+        VALUES (#{name}, #{title}, #{price}, #{color}, #{mainImg}, #{detailImg}, #{memberId},
                 #{state}, #{categoryNum})
     </insert>
+
+    <!-- 상품 수정 -->
+    <update id="itemUpdate">
+        UPDATE item
+        SET item_name=#{name},
+            item_title=#{title},
+            item_price=#{price},
+            item_main_img=#{mainImg},
+            item_detail_img=#{detailImg},
+            item_state=#{state}
+        WHERE item_seq=#{seq}
+    </update>
+
+    <!-- 상품 삭제 -->
+    <delete id="deleteItem">
+        DELETE
+        FROM item
+        WHERE item_seq = #{seq}
+    </delete>
 </mapper>
 
