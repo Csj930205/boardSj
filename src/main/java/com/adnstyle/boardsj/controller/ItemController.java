@@ -3,7 +3,9 @@ package com.adnstyle.boardsj.controller;
 import com.adnstyle.boardsj.dto.ItemDto;
 import com.adnstyle.boardsj.dto.MemberDto;
 import com.adnstyle.boardsj.dto.User;
+import com.adnstyle.boardsj.repository.AttachRepository;
 import com.adnstyle.boardsj.service.ItemService;
+import com.adnstyle.boardsj.util.FileUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpSession;
@@ -36,18 +39,8 @@ public class ItemController {
      * 상품 등록
      * */
     @PostMapping("insertItem")
-    public String itemInsert(ItemDto itemDto, HttpSession session) {
-        MemberDto memberInsertSession = (MemberDto) session.getAttribute("memberLoginInfo");
-        User socialInsertSession = (User) session.getAttribute("user");
-
-        if (memberInsertSession != null) {
-            String itemMemberId = memberInsertSession.getId();
-            itemDto.setMemberId(itemMemberId);
-        } else {
-            String itemUserId = socialInsertSession.getEmail();
-            itemDto.setMemberId(itemUserId);
-        }
-        int result = itemService.itemInsert(itemDto);
+    public String itemInsert(ItemDto itemDto, MultipartFile[] files) {
+        int result = itemService.itemInsert(itemDto, files);
         if (result > 0) {
             return "redirect:/item/itemList";
         } else {
@@ -59,17 +52,7 @@ public class ItemController {
      * 상품 수정
      * */
     @PostMapping("itemUpdate")
-    public String itemUpdate(ItemDto itemDto, HttpSession session) {
-        MemberDto memberUpdateSession = (MemberDto) session.getAttribute("memberLoginInfo");
-        User socialUpdateSession = (User) session.getAttribute("user");
-
-        if (memberUpdateSession != null) {
-            String itemMemberId = memberUpdateSession.getId();
-            itemDto.setMemberId(itemMemberId);
-        } else {
-            String itemUserId = socialUpdateSession.getEmail();
-            itemDto.setMemberId(itemUserId);
-        }
+    public String itemUpdate(ItemDto itemDto) {
         int result = itemService.itemUpdate(itemDto);
         if (result > 0) {
             return "redirect:/item/itemList";

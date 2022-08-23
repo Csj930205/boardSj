@@ -13,16 +13,32 @@
         <result property="postTime" column="attach_post_time"/>
     </resultMap>
 
+    <!-- 파일 업로드 조회 -->
     <select id="attachList" resultMap="simpleResultAttach">
         SELECT *
         FROM attach
     </select>
+
+    <!-- 파일 업로드 개별 조회 -->
+    <select id="attachListDetail" resultMap="simpleResultAttach">
+        SELECT *
+        FROM attach
+        WHERE attach_ref_key = #{refKey}
+    </select>
+
     <!-- 파일 업로드 내용 -->
-    <insert id="attachInsert" useGeneratedKeys="true" keyProperty="seq">
-        insert into attach(attach_ref_key,
-                           attach_display_name,
-                           attach_save_name,
-                           attach_size,)
-        VALUES (#{refKey}, #{displayName}, #{saveName}, #{size})
+    <insert id="attachInsert" parameterType="list">
+        insert into attach
+            (
+        attach_ref_key,
+        attach_display_name,
+        attach_save_name,
+        attach_size)
+        VALUES (
+        <foreach collection="list" item="item">
+
+            #{item.refKey}, #{item.displayName}, #{item.saveName}, #{item.size}
+            )
+        </foreach>
     </insert>
 </mapper>

@@ -10,7 +10,6 @@
     <table class="table">
         <thead class="thead-light">
         <tr class="text-center">
-            <th scope="col">상품이미지</th>
             <th scope="col">상품번호</th>
             <th scope="col">상품명</th>
             <th scope="col">타이틀</th>
@@ -25,7 +24,6 @@
         </thead>
         <tbody>
         <tr class="text-center" th:each="list:${itemList}">
-            <th scope="row" th:text="${list.mainImg}"></th>
             <th scope="row" th:text="${list.seq}"></th>
             <th scope="row" th:text="${list.name}"></th>
             <th scope="row" th:text="${list.title}"></th>

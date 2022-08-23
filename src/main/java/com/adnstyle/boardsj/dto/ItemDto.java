@@ -11,7 +11,6 @@ public class ItemDto {
     private String title;
     private int price;
     private String color;
-    private String mainImg;
     private String memberId;
     private LocalDateTime postTime;
     private int state;

@@ -5,9 +5,7 @@
 <body>
 <header th:insert="header.html"></header>
 <h1 style="text-align: center">아이템등록 페이지</h1>
-
-<!-- enctype="multipart/form-data" < form에 넣어야함.-->
-<form action="/item/insertItem" method="post">
+<form action="/item/insertItem" method="post" enctype="multipart/form-data">
     <p>
         <label>
             상품명: <input type="text" name="name" value="컨버스 신발">
@@ -36,7 +34,7 @@
 
     <p>
         <label>
-            상품이미지: <input type="file" name="mainImg">
+            첨부파일 선택: <input type="file" name="files">
         </label>
     </p>
     <p>

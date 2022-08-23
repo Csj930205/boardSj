@@ -1,9 +1,6 @@
 package com.adnstyle.boardsj.controller;
 
-import com.adnstyle.boardsj.dto.BoardDto;
-import com.adnstyle.boardsj.dto.ItemDto;
-import com.adnstyle.boardsj.dto.MemberDto;
-import com.adnstyle.boardsj.dto.User;
+import com.adnstyle.boardsj.dto.*;
 import com.adnstyle.boardsj.service.BoardService;
 import com.adnstyle.boardsj.service.ItemService;
 import com.adnstyle.boardsj.service.MemberService;
@@ -16,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -59,20 +57,20 @@ public class DomainController {
     }
 
     /*
-    * 로그인 실패시 이동
-    * */
+     * 로그인 실패시 이동
+     * */
     @RequestMapping("/denied/denied.do")
-    public String loginDenied(){
+    public String loginDenied() {
         return "denied/denied";
     }
 
     /*
-    * 로그인 성공시 이동
-    * */
+     * 로그인 성공시 이동
+     * */
     @RequestMapping("/auth/login_access.do")
-    public String loginAccess(Authentication authentication, HttpSession session){
+    public String loginAccess(Authentication authentication, HttpSession session) {
         MemberDto memberLoginInfo = (MemberDto) authentication.getPrincipal(); // userDetail 객체를 가져온다
-        session.setAttribute("memberLoginInfo",memberLoginInfo);
+        session.setAttribute("memberLoginInfo", memberLoginInfo);
         return "auth/login_access";
     }
 
@@ -85,12 +83,12 @@ public class DomainController {
     }
 
     /*
-    * 게시글 상세조회
-    * */
+     * 게시글 상세조회
+     * */
     @RequestMapping("/board/detailList/{seq}")
-    public String detailListBoard(@PathVariable("seq") int seq, Model model){
+    public String detailListBoard(@PathVariable("seq") int seq, Model model) {
         BoardDto detailListBoard = boardService.detailListBoard(seq);
-        model.addAttribute("detailListBoard",detailListBoard);
+        model.addAttribute("detailListBoard", detailListBoard);
         return "board/detailList";
     }
 
@@ -106,35 +104,38 @@ public class DomainController {
      * 답글을 위한 게시물 상세조회 페이지 이동
      * */
     @GetMapping("/board/replay/{seq}")
-    public String replayBoard(@PathVariable("seq")int seq, Model model){
+    public String replayBoard(@PathVariable("seq") int seq, Model model) {
         BoardDto replayBoard = boardService.replayGetSeq(seq);
-        model.addAttribute("replayBoard",replayBoard);
+        model.addAttribute("replayBoard", replayBoard);
         return "board/replay";
     }
 
     /*
-    * 상품리스트 페이지 이동
-    * */
+     * 상품리스트 페이지 이동
+     * */
     @RequestMapping("/item/itemList")
-    public String itemList(){
+    public String itemList() {
         return "/item/itemList";
     }
 
     /*
-    * 상품등록 페이지 이동
-    * */
+     * 상품등록 페이지 이동
+     * */
     @RequestMapping("/item/itemInsert")
-    public String itemInsert(){
+    public String itemInsert() {
         return "/item/itemInsert";
     }
 
     /*
-    * 상품상세페이지 이동
-    * */
+     * 상품상세페이지 이동
+     * */
     @RequestMapping("/item/itemmodify/{seq}")
-    public String getList(@PathVariable("seq")int seq, Model model){
+    public String getList(@PathVariable("seq") int seq, Model model) {
         ItemDto modifyList = itemService.getList(seq);
-        model.addAttribute("modifyList",modifyList);
+        model.addAttribute("modifyList", modifyList);
+
+        AttachDto fileList = itemService.attachListDetail(seq);
+        model.addAttribute("fileList", fileList);
         return "/item/itemmodify";
     }
 }

@@ -2,6 +2,7 @@ package com.adnstyle.boardsj.util;
 
 import com.adnstyle.boardsj.dto.AttachDto;
 import com.adnstyle.boardsj.dto.ItemDto;
+import lombok.NoArgsConstructor;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;

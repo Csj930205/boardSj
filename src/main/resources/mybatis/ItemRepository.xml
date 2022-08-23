@@ -10,7 +10,6 @@
         <result property="title" column="item_title"/>
         <result property="price" column="item_price"/>
         <result property="color" column="item_color"/>
-        <result property="mainImg" column="item_main_img"/>
         <result property="memberId" column="item_member_id"/>
         <result property="postTime" column="item_post_time"/>
         <result property="state" column="item_state"/>
@@ -24,7 +23,6 @@
                item_title,
                item_price,
                item_color,
-               item_main_img,
                item_member_id,
                item_post_time,
                item_state,
@@ -39,7 +37,6 @@
                item_title,
                item_price,
                item_color,
-               item_main_img,
                item_member_id,
                item_post_time,
                item_state,
@@ -54,11 +51,10 @@
                          item_title,
                          item_price,
                          item_color,
-                         item_main_img,
                          item_member_id,
                          item_state,
                          item_category_num)
-        VALUES (#{name}, #{title}, #{price}, #{color}, #{mainImg}, #{memberId},
+        VALUES (#{name}, #{title}, #{price}, #{color}, #{memberId},
                 #{state}, #{categoryNum})
     </insert>
 
@@ -68,7 +64,6 @@
         SET item_name=#{name},
             item_title=#{title},
             item_price=#{price},
-            item_main_img=#{mainImg},
             item_state=#{state},
             item_category_num=#{categoryNum}
         WHERE item_seq=#{seq}

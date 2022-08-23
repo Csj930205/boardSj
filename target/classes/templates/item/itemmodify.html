@@ -1,35 +1,81 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta carset="UTF-8">
+    <style>
+        .filebox .upload-name {
+            display: inline-block;
+            height: 40px;
+            padding: 0 10px;
+            vertical-align: middle;
+            border: 1px solid #dddddd;
+            width: 40%;
+        }
+        .filebox .form-control{
+            display: inline-block;
+            height: 40px;
+            padding: 0 10px;
+            vertical-align: middle;
+            border: 1px solid #dddddd;
+            width: 70%;
+        }
+        .filebox .input-group-text{
+            display: inline-block;
+            padding: 10px 20px;
+            color: #fff;
+            vertical-align: middle;
+            background-color: #999999;
+            cursor: pointer;
+            height: 40px;
+            margin-left: 10px;
+        }
+        .filebox label {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #fff;
+            vertical-align: middle;
+            background-color: #999999;
+            cursor: pointer;
+            height: 40px;
+            margin-left: 10px;
+        }
+        .filebox input[type="file"] {
+            position: absolute;
+            width: 0;
+            height: 0;
+            padding: 0;
+            overflow: hidden;
+            border: 0;
+        }
+    </style>
 </head>
 <body>
 <header th:insert="header.html"></header>
 <h1 style="text-align: center">상품수정</h1>
 <br>
 <div class="container">
-    <div class="d-flex justify-content-center align-items-center" style="height:clac(100vh -200px)">
+    <div class="d-flex justify-content-center align-items-center">
         <form action="/item/itemUpdate" method="post">
-            <p class="input-group">
+            <p class="filebox">
                 <label class="input-group-text">상품번호</label>
                 <input name="seq" type="text" class="form-control" th:value="${modifyList.seq}" readonly>
             </p>
-            <p class="input-group">
+            <p class="filebox">
                 <label class="input-group-text">상품이름</label>
                 <input name="name" type="text" class="form-control" th:value="${modifyList.name}">
             </p>
-            <p class="input-group">
+            <p class="filebox">
                 <label class="input-group-text">타이틀</label>
                 <input name="title" type="text" class="form-control" th:value="${modifyList.title}">
             </p>
-            <p class="input-group">
+            <p class="filebox">
                 <label class="input-group-text">가격</label>
                 <input name="price" type="number" class="form-control" th:value="${modifyList.price}">
             </p>
-            <p class="input-group">
+            <p class="filebox">
                 <label class="input-group-text">게시자</label>
                 <input name="id" type="text" class="form-control" th:value="${session.memberLoginInfo}?${session.memberLoginInfo.id}:${session.user.email}" readonly>
             </p>
-            <p class="input-group">
+            <p class="filebox">
                 <label class="input-group-text">카테고리</label>
                 <select name="categoryNum" class="form-control" th:value="${modifyList.categoryNum}">
                     <option value="1">신발(1)</option>
@@ -37,11 +83,13 @@
                     <option value="2">하의(3)</option>
                 </select>
             </p>
-            <p class="input-group">
-                <label class="input-group-text">상품메인이미지</label>
-                <input name="mainImg" type="file" class="form-control" th:value="${modifyList.mainImg}">
+            <p class="filebox">
+                <label class="input-group-text">첨부파일</label>
+                <input class="upload-name" name="displayName" th:value="${fileList.getDisplayName()}">
+                <label for="file">파일찾기</label>
+                <input type="file" name="files" id="file">
             </p>
-            <p class="input-group">
+            <p class="filebox">
                 <label class="input-group-text">상태</label>
                 <select name="state" class="form-control" th:value="${modifyList.state}">
                     <option value="1" selected>공개(1)</option>

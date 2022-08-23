@@ -32,5 +32,4 @@ public class SignupController {
             return "redirect:/signup/signup.do";
         }
     }
-
 }
