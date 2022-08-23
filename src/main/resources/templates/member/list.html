@@ -50,8 +50,8 @@
             <th scope="col">회원번호</th>
             <th scope="col">이름</th>
             <th scope="col">이메일</th>
-            <th scope="col">사진</th>
             <th scope="col">등급</th>
+            <th scope="col">사진</th>
             <th scope="col">정보</th>
         </tr>
         </thead>
@@ -60,8 +60,10 @@
             <th scope="row" th:text="${User.seq}"></th>
             <th scope="row" th:text="${User.name}"></th>
             <th scope="row" th:text="${User.email}"></th>
-            <th scope="row" th:text="${User.picture}"></th>
             <th scope="row" th:text="${User.role}"></th>
+            <th scope="row">
+                <img th:src="${User.picture}" style="width:5%" >
+            </th>
             <th>
                 <a class="btn btn-outline-primary" role="button"
                    th:href="@{/member/socialModify/{seq}(seq=${User.seq})}">

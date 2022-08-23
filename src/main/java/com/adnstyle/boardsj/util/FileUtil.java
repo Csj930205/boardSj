@@ -34,16 +34,18 @@ public class FileUtil {
     * 서버에 첨부파일을 생성하고, 업로드 파일 목록 반환한다.
     * */
     public List<AttachDto> uploadFiles(MultipartFile[] files, int refKey){
-        if(files[0].isEmpty()){//  파일이 비어있으면 비어있는 리스트 반환
-            return Collections.emptyList();
-        }
-
         List<AttachDto> attachList = new ArrayList<>();//  업로드 파일 정보를 담을 비어있는 리스트
+
         File dir = new File(uploadPath);//  uploadPath에 해당하는 디렉토리가 존재하지 않으면, 부모 디렉토리를 포함하 모든 디렉토리를 생성
         if(dir.exists() == false){
             dir.mkdir();
         }
 
+        for(MultipartFile file : files){
+            if(file.getSize() < 1){
+                continue;
+            }
+        }
         for(MultipartFile file : files){//  파일 갯수만큼 forEach
             try{
                 final String extension = FilenameUtils.getExtension(file.getOriginalFilename()); // 파일 확장자

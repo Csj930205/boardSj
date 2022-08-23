@@ -85,6 +85,7 @@ public class ItemService{
     public int itemUpdate(ItemDto itemDto){
         MemberDto memberUpdateSession = (MemberDto) session.getAttribute("memberLoginInfo");
         User socialUpdateSession = (User) session.getAttribute("user");
+
         if (memberUpdateSession != null) {
             String itemMemberId = memberUpdateSession.getId();
             itemDto.setMemberId(itemMemberId);
@@ -92,6 +93,7 @@ public class ItemService{
             String itemUserId = socialUpdateSession.getEmail();
             itemDto.setMemberId(itemUserId);
         }
+
         return itemRepository.itemUpdate(itemDto);
     }
 

@@ -1,5 +1,6 @@
 package com.adnstyle.boardsj.controller;
 
+import com.adnstyle.boardsj.dto.AttachDto;
 import com.adnstyle.boardsj.dto.ItemDto;
 import com.adnstyle.boardsj.dto.MemberDto;
 import com.adnstyle.boardsj.dto.User;
@@ -24,6 +25,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ItemController {
     private final ItemService itemService;
+    private final AttachRepository attachRepository;
 
     /*
      * 상품리스트 전체조회
@@ -53,7 +55,9 @@ public class ItemController {
      * */
     @PostMapping("itemUpdate")
     public String itemUpdate(ItemDto itemDto) {
-        int result = itemService.itemUpdate(itemDto);
+        int result = 0;
+        result += itemService.itemUpdate(itemDto);
+        result += attachRepository.deleteAttach(itemDto.getSeq());
         if (result > 0) {
             return "redirect:/item/itemList";
         } else {

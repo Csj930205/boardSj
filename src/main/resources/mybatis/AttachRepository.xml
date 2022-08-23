@@ -29,16 +29,30 @@
     <!-- 파일 업로드 내용 -->
     <insert id="attachInsert" parameterType="list">
         insert into attach
-            (
+        (
         attach_ref_key,
         attach_display_name,
         attach_save_name,
         attach_size)
         VALUES (
         <foreach collection="list" item="item">
-
             #{item.refKey}, #{item.displayName}, #{item.saveName}, #{item.size}
             )
         </foreach>
     </insert>
+
+    <!-- 파일 수정 -->
+    <update id="updateAttach">
+        UPDATE attach
+        SET attach_display_name = #{displayName},
+            attach_save_name    = #{saveName},
+            attach_size         = #{size}
+        WHERE attach_seq = #{seq}
+    </update>
+
+    <!-- 파일 삭제 -->
+    <delete id="deleteAttach">
+        DELETE FROM attach
+        WHERE attach_ref_key = #{refKey}
+    </delete>
 </mapper>

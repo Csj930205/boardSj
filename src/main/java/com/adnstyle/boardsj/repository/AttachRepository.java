@@ -21,12 +21,17 @@ public interface AttachRepository {
     int attachInsert(List<AttachDto> attachList);
 
     /*
-    * 파일 삭제
+    * 파일 수정
     * */
-    int attachDelete(int seq);
+    int updateAttach(int seq);
 
     /*
     * 파일 개별 조회
     * */
     AttachDto attachListDetail(int refKey);
+
+    /*
+    * 파일 삭제
+    * */
+    int deleteAttach(int refKey);
 }
